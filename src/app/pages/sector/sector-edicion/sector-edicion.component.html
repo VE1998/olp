@@ -1,0 +1,29 @@
+<mat-card>
+  <mat-card-content>INGRESE SECTOR</mat-card-content>
+</mat-card>
+
+<form [formGroup]="form" class="example-container" (ngSubmit)="operar()" #frmSector="">
+
+  <div [hidden]="true">
+    <mat-form-field>
+      <input matInput placeholder="id_sector" required="" formControlName="id_sector">
+    </mat-form-field>
+  </div>
+
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Nombre" required="" formControlName="nombre">
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="codigo tony" required="" formControlName="codigo_tony">
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Region" required="" formControlName="region">
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" type="submit">Guardar</button>
+  <button mat-raised-button color="warn">Cancelar</button>
+
+</form>
+

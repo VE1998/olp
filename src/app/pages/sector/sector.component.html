@@ -1,3 +1,58 @@
-<ul>
-  <li *ngFor="let sec of sectores">{{ sec.nombre}}</li>
-</ul>
+<router-outlet></router-outlet>
+
+<mat-form-field>
+  <mat-label>Filter</mat-label>
+  <input matInput (keyup)="filtrar($event)" placeholder="Buscar Sector" #input>
+</mat-form-field>
+
+
+<div class="mat-elevation-z8">
+  <table mat-table [dataSource]="dataSource" matSort>
+    <!-- ID Column -->
+    <ng-container matColumnDef="id_sector">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>ID</th>
+      <td mat-cell *matCellDef="let row">{{ row.id_sector }}</td>
+    </ng-container>
+
+    <!-- Progress Column -->
+    <ng-container matColumnDef="nombre">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>nombre</th>
+      <td mat-cell *matCellDef="let row">{{ row.nombre }}</td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="codigo_tony">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>codigo tony</th>
+      <td mat-cell *matCellDef="let row">{{ row.codigo_tony }}</td>
+    </ng-container>
+
+    <!-- Fruit Column -->
+    <ng-container matColumnDef="region">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>region</th>
+      <td mat-cell *matCellDef="let row">{{ row.region }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="acciones">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Acciones</th>
+      <td mat-cell *matCellDef="let row">
+        <div class="example-button-container">
+          <button [routerLink]="['editar', row.id_sector]" mat-mini-fab color="primary" aria-label="Example icon button with a menu icon">
+            <mat-icon>edit</mat-icon>
+          </button>
+        </div>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displeyedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displeyedColumns"></tr>
+  </table>
+  <mat-paginator
+    [pageSizeOptions]="[5, 10, 25, 100]"
+    aria-label="Select page of users"
+  ></mat-paginator>
+
+  <button style="float: right;" routerLink="/sector/nuevo" mat-fab color="primary" aria-label="Example icon button with a delete icon">
+    <mat-icon>edit</mat-icon>
+  </button>
+
+</div>
