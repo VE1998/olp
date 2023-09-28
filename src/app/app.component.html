@@ -1,21 +1,52 @@
-<mat-drawer-container class="example-container" autosize>
-  <mat-drawer #drawer class="example-sidenav" mode="side">
-    <p>Auto-resizing sidenav</p>
-    <p *ngIf="showFiller">Lorem, ipsum dolor sit amet consectetur.</p>
-    <button (click)="showFiller = !showFiller" mat-raised-button>
-      Toggle extra text
-    </button>
-  </mat-drawer>
+<div class="example-container">
+  <mat-drawer-container class="example-container" autosize>
+    <mat-toolbar color="primary">
+      <button mat-icon-button (click)="drawer.toggle()">
+        <mat-icon *ngIf="!drawer.opened">menu</mat-icon>
+        <mat-icon *ngIf="drawer.opened">close</mat-icon>
+      </button>
 
-  <div class="example-sidenav-content">
-    <button type="button" mat-button (click)="drawer.toggle()">
-      Toggle sidenav
-    </button>
-  </div>
+      <h1 class="example-app-name">OLPASA</h1>
+      <span class="example-spacer"></span>
 
-</mat-drawer-container>
+      <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+        <mat-icon>person2</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item>
+          <mat-icon>person</mat-icon>
+          <span>Mi Perfil</span>
+        </button>
+        <button mat-menu-item>
+          <mat-icon>logout</mat-icon>
+          <span>Cerrar Sesion</span>
+        </button>
+      </mat-menu>
+
+    </mat-toolbar>
+
+    <mat-drawer #drawer class="example-sidenav" mode="side">
+      <img src="assets/logo_olpasa.png" width="200" height="100" style="margin-left: 20px" />
+
+      <mat-divider></mat-divider>
+
+      <button mat-menu-item (click)="drawer.toggle()" routerLink="/sector" style="cursor: pointer">
+        <mat-icon>search</mat-icon>
+        <span>Sector</span>
+      </button>
+
+      <mat-divider></mat-divider>
+
+      <button mat-menu-item (click)="drawer.toggle()" routerLink="/unidadmedida" style="cursor: pointer">
+        <mat-icon>search</mat-icon>
+        <span>Unidad Medida</span>
+      </button>
+
+    </mat-drawer>
+
+    <router-outlet></router-outlet>
+
+  </mat-drawer-container>
+</div>
 
 
-
-
-<router-outlet></router-outlet>

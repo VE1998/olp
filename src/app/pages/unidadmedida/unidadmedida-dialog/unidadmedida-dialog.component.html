@@ -1,0 +1,13 @@
+<div>
+  <mat-form-field>
+    <input matInput placeholder="Descripcion" [(ngModel)]="um.descripcion">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="Codigo Onu" [(ngModel)]="um.codigo_onu" >
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="Codigo Sunat" [(ngModel)]="um.codigo_sunat" >
+  </mat-form-field>
+</div>
+<button mat-raised-button color="primary">Primary</button>
+<button mat-raised-button color="dark" (click)="cancelar()" >Cancelar</button>

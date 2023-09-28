@@ -9,12 +9,16 @@ import { HttpClientModule } from '@angular/common/http';
 import { MaterialModule } from './material/material.module';
 import { SectorEdicionComponent } from './pages/sector/sector-edicion/SectorEdicionComponent';
 import { ReactiveFormsModule, FormsModule  } from '@angular/forms';
+import { UnidadmedidaComponent } from './pages/unidadmedida/unidadmedida.component';
+import { UnidadmedidaDialogComponent } from './pages/unidadmedida/unidadmedida-dialog/unidadmedida-dialog.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SectorComponent,
     SectorEdicionComponent,
+    UnidadmedidaComponent,
+    UnidadmedidaDialogComponent,
   ],
   imports: [
     BrowserModule,

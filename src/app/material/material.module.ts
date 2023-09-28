@@ -12,7 +12,10 @@ import {MatCardModule} from '@angular/material/card';
 import {MatSelectModule} from '@angular/material/select';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatSidenavModule} from '@angular/material/sidenav';
-
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatTreeModule} from '@angular/material/tree';
+import {MatMenuModule} from '@angular/material/menu';
+import {MatDialog, MAT_DIALOG_DATA, MatDialogRef, MatDialogModule} from '@angular/material/dialog';
 
 
 @NgModule({
@@ -30,7 +33,11 @@ import {MatSidenavModule} from '@angular/material/sidenav';
     MatCardModule,
     MatSelectModule,
     MatSnackBarModule,
-    MatSidenavModule
+    MatSidenavModule,
+    MatToolbarModule,
+    MatTreeModule,
+    MatMenuModule,
+    MatDialogModule
   ], exports: [
     MatTableModule,
     MatButtonModule,
@@ -43,7 +50,11 @@ import {MatSidenavModule} from '@angular/material/sidenav';
     MatCardModule,
     MatSelectModule,
     MatSnackBarModule,
-    MatSidenavModule
+    MatSidenavModule,
+    MatToolbarModule,
+    MatTreeModule,
+    MatMenuModule,
+    MatDialogModule
   ]
 })
 export class MaterialModule { }
