@@ -29,7 +29,7 @@ export class UnidadmedidaService {
   }
 
   modificar(unidadmedida: UnidadMedida){
-    return this.http.post(this.url, unidadmedida);
+    return this.http.put(this.url, unidadmedida);
    }
 
 }

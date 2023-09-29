@@ -42,6 +42,13 @@
         <span>Unidad Medida</span>
       </button>
 
+      <mat-divider></mat-divider>
+
+      <button mat-menu-item (click)="drawer.toggle()" routerLink="/criteriocalidad" style="cursor: pointer">
+        <mat-icon>InventorySharpIcon</mat-icon>
+        <span>Registrar Castigos</span>
+      </button>
+
     </mat-drawer>
 
     <router-outlet></router-outlet>

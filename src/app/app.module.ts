@@ -11,6 +11,8 @@ import { SectorEdicionComponent } from './pages/sector/sector-edicion/SectorEdic
 import { ReactiveFormsModule, FormsModule  } from '@angular/forms';
 import { UnidadmedidaComponent } from './pages/unidadmedida/unidadmedida.component';
 import { UnidadmedidaDialogComponent } from './pages/unidadmedida/unidadmedida-dialog/unidadmedida-dialog.component';
+import { CriteriocalidadComponent } from './pages/criteriocalidad/criteriocalidad.component';
+import { CriteriocalidadDialogComponent } from './pages/criteriocalidad/criteriocalidad-dialog/criteriocalidad-dialog.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +21,8 @@ import { UnidadmedidaDialogComponent } from './pages/unidadmedida/unidadmedida-d
     SectorEdicionComponent,
     UnidadmedidaComponent,
     UnidadmedidaDialogComponent,
+    CriteriocalidadComponent,
+    CriteriocalidadDialogComponent,
   ],
   imports: [
     BrowserModule,

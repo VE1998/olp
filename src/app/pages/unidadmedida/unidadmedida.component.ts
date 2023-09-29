@@ -11,42 +11,60 @@ import { UnidadMedida } from 'src/app/_model/unidadmedida';
 @Component({
   selector: 'app-unidadmedida',
   templateUrl: './unidadmedida.component.html',
-  styleUrls: ['./unidadmedida.component.css']
+  styleUrls: ['./unidadmedida.component.css'],
 })
-export class UnidadmedidaComponent implements OnInit{
-
+export class UnidadmedidaComponent implements OnInit {
   dataSource!: MatTableDataSource<UnidadMedida>;
-  displeyedColumns = ['codigo_um', 'descripcion', 'codigo_onu', 'codigo_sunat', 'acciones'];
+  displeyedColumns = [
+    'codigo_um',
+    'descripcion',
+    'codigo_onu',
+    'codigo_sunat',
+    'acciones',
+  ];
   @ViewChild(MatPaginator) paginator!: MatPaginator;
-  @ViewChild(MatSort, {static: true}) sort!: MatSort;
+  @ViewChild(MatSort, { static: true }) sort!: MatSort;
 
-  constructor(private UnidadmedidaService: UnidadmedidaService, private snackBar: MatSnackBar,
-    private dialog: MatDialog){
+  constructor(
+    private UnidadmedidaService: UnidadmedidaService,
+    private snackBar: MatSnackBar,
+    private dialog: MatDialog,
 
-  }
+  ) {}
 
   ngOnInit(): void {
-    this.UnidadmedidaService.unidadMedidaCambio.subscribe(data =>{
+    this.UnidadmedidaService.unidadMedidaCambio.subscribe((data) => {
       this.dataSource = new MatTableDataSource(data);
-        this.dataSource.sort = this.sort;
-        this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
+      this.dataSource.paginator = this.paginator;
     });
 
-    this.UnidadmedidaService.mensajeCambio.subscribe( data => {
+    this.UnidadmedidaService.mensajeCambio.subscribe(data => {
       this.snackBar.open(data, 'AVISO', {
         duration: 2000
       });
     });
 
-    this.UnidadmedidaService.listar().subscribe(data => {
+    this.UnidadmedidaService.unidadMedidaCambio.subscribe((data) => {
+      this.dataSource = new MatTableDataSource(data);
+      this.dataSource.sort = this.sort;
+      this.dataSource.paginator = this.paginator;
+    });
+
+    this.UnidadmedidaService.mensajeCambio.subscribe((data) => {
+      this.snackBar.open(data, 'AVISO', {
+        duration: 2000,
+      });
+    });
+
+    this.UnidadmedidaService.listar().subscribe((data) => {
       this.dataSource = new MatTableDataSource(data);
       this.dataSource.sort = this.sort;
       this.dataSource.paginator = this.paginator;
     });
   }
 
-  filtrar(event: Event){
-
+  filtrar(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
 
@@ -55,12 +73,13 @@ export class UnidadmedidaComponent implements OnInit{
     }
   }
 
-openDialog(unidadmedida: UnidadMedida){
-  this.dialog.open(UnidadmedidaDialogComponent, {
-    width: '250px',
-    data: unidadmedida
-  });
-}
+  openDialog(unidadmedida?: UnidadMedida) {
 
+    let uni = unidadmedida != null ? unidadmedida: new UnidadMedida();
 
+    this.dialog.open(UnidadmedidaDialogComponent, {
+      width: '250px',
+      data: uni,
+    });
+  }
 }

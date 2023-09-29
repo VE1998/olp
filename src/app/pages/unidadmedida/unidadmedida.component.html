@@ -51,7 +51,7 @@
     aria-label="Select page of users"
   ></mat-paginator>
 
-  <button style="float: right;" routerLink="/unidadmedida/nuevo" mat-fab color="primary" aria-label="Example icon button with a delete icon">
+  <button style="float: right;" (click)="openDialog()" mat-fab color="primary" aria-label="Example icon button with a delete icon">
     <mat-icon>edit</mat-icon>
   </button>
 
