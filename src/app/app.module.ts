@@ -13,6 +13,9 @@ import { UnidadmedidaComponent } from './pages/unidadmedida/unidadmedida.compone
 import { UnidadmedidaDialogComponent } from './pages/unidadmedida/unidadmedida-dialog/unidadmedida-dialog.component';
 import { CriteriocalidadComponent } from './pages/criteriocalidad/criteriocalidad.component';
 import { CriteriocalidadDialogComponent } from './pages/criteriocalidad/criteriocalidad-dialog/criteriocalidad-dialog.component';
+import { TipoOeracionComponent } from './pages/tipo-operacion/tipo-oeracion.component';
+import { TipoOperacionDialogComponent } from './pages/tipo-operacion/tipo-operacion-dialog/tipo-operacion-dialog.component';
+
 
 @NgModule({
   declarations: [
@@ -23,6 +26,8 @@ import { CriteriocalidadDialogComponent } from './pages/criteriocalidad/criterio
     UnidadmedidaDialogComponent,
     CriteriocalidadComponent,
     CriteriocalidadDialogComponent,
+    TipoOeracionComponent,
+    TipoOperacionDialogComponent,
   ],
   imports: [
     BrowserModule,

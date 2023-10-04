@@ -1,1 +1,52 @@
-<p>criteriocalidad-dialog works!</p>
+<h1 mat-dialog-title>Registrar Castigo</h1>
+
+<div mat-dialog-content>
+  <mat-grid-list cols="4" rowHeight="50px" gutterSize="5px">
+    <mat-grid-tile [colspan]="2" [rowspan]="1">
+      <mat-label class="example-full-width">Ticket N: </mat-label>
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="" />
+      </mat-form-field>
+    </mat-grid-tile>
+
+    <mat-grid-tile [colspan]="2" [rowspan]="1">
+      <mat-label class="example-full-width">Fecha: </mat-label>
+      <mat-label class="example-full-width">21/12/2023 </mat-label>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="2" [rowspan]="1">
+      <mat-label class="example-full-width">Titular: </mat-label>
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="" />
+      </mat-form-field>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="2" [rowspan]="1">
+      <mat-label class="example-full-width">Producto: </mat-label>
+      <mat-label class="example-full-width">Aceite Crudo de Palma </mat-label>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>
+
+<div mat-dialog-content>
+  <mat-grid-list cols="2" gutterSize="5px" rowHeight="250px">
+    <mat-grid-tile style="background-color: rgb(154, 154, 219)">
+      <!-- Contenido del primer elemento de la cuadrícula exterior -->
+    </mat-grid-tile>
+    <mat-grid-tile style="background-color: rgb(154, 154, 219)">
+      <!-- Contenido del primer elemento de la cuadrícula exterior -->
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>
+
+<div mat-dialog-content>
+  <mat-grid-list cols="1" gutterSize="1px" rowHeight="200px">
+    <mat-grid-tile style="background-color: rgb(154, 154, 219)">
+
+
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>
+
+<div mat-dialog-actions>
+  <button mat-button mat-dialog-close>Guardar</button>
+  <button mat-button mat-dialog-close>Cancelar</button>
+</div>

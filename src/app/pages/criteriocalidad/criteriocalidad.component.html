@@ -1,69 +1,72 @@
+<mat-card>
+  <mat-card-content>
+
 <router-outlet></router-outlet>
 
-<mat-form-field>
-  <mat-label>Filter</mat-label>
-  <input matInput (keyup)="filtrar($event)" placeholder="Buscar Sector" #input>
-</mat-form-field>
+    <mat-form-field>
+      <mat-label>Filter</mat-label>
+      <input matInput (keyup)="filtrar($event)" placeholder="Buscar Sector" #input>
+    </mat-form-field>
 
 
-<div class="mat-elevation-z8">
-  <table mat-table [dataSource]="dataSource" matSort>
-    <!-- ID Column -->
-    <ng-container matColumnDef="NumeroTiket">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Numero Tiket</th>
-    </ng-container>
+    <div class="mat-elevation-z8">
+      <table mat-table [dataSource]="dataSource" matSort>
+        <!-- ID Column -->
+        <ng-container matColumnDef="NumeroTiket">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Numero Tiket</th>
+        </ng-container>
 
-    <!-- Progress Column -->
-    <ng-container matColumnDef="Proveedor">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Proveedor</th>
-    </ng-container>
+        <!-- Progress Column -->
+        <ng-container matColumnDef="Proveedor">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Proveedor</th>
+        </ng-container>
 
-    <!-- Name Column -->
-    <ng-container matColumnDef="PesoIngreso">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Peso Ingreso</th>
-    </ng-container>
+        <!-- Name Column -->
+        <ng-container matColumnDef="PesoIngreso">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Peso Ingreso</th>
+        </ng-container>
 
-    <!-- Fruit Column -->
-    <ng-container matColumnDef="Vehiculo">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Vehiculo</th>
-    </ng-container>
+        <!-- Fruit Column -->
+        <ng-container matColumnDef="Vehiculo">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Vehiculo</th>
+        </ng-container>
 
-    <!-- Fruit Column -->
-    <ng-container matColumnDef="Remolque">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Remolque</th>
-    </ng-container>
+        <!-- Fruit Column -->
+        <ng-container matColumnDef="Remolque">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Remolque</th>
+        </ng-container>
 
-    <!-- Fruit Column -->
-    <ng-container matColumnDef="Conductor">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Conductor</th>
-    </ng-container>
-    <!-- Fruit Column -->
-    <ng-container matColumnDef="Producto">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Producto</th>
-    </ng-container>
+        <!-- Fruit Column -->
+        <ng-container matColumnDef="Conductor">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Conductor</th>
+        </ng-container>
+        <!-- Fruit Column -->
+        <ng-container matColumnDef="Producto">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Producto</th>
+        </ng-container>
 
-    <ng-container matColumnDef="Acciones">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Acciones</th>
-      <td mat-cell *matCellDef="">
-        <div class="example-button-container">
-          <button  mat-mini-fab color="primary" aria-label="Example icon button with a menu icon">
-            <mat-icon>edit</mat-icon>
-          </button>
-        </div>
-      </td>
-    </ng-container>
+        <ng-container matColumnDef="Acciones">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Acciones</th>
+          <td mat-cell *matCellDef="">
+            <div class="example-button-container">
+              <button mat-mini-fab color="primary" aria-label="Example icon button with a menu icon">
+                <mat-icon>edit</mat-icon>
+              </button>
+            </div>
+          </td>
+        </ng-container>
 
-    <tr mat-header-row *matHeaderRowDef="displeyedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displeyedColumns"></tr>
-  </table>
-  <mat-paginator
-    [pageSizeOptions]="[5, 10, 25, 100]"
-    aria-label="Select page of users"
-  ></mat-paginator>
+        <tr mat-header-row *matHeaderRowDef="displeyedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displeyedColumns"></tr>
+      </table>
+      <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
 
-  <button style="float: right;" routerLink="/sector/nuevo" mat-fab color="primary" aria-label="Example icon button with a delete icon">
-    <mat-icon>edit</mat-icon>
-  </button>
+      <button style="float: right;" (click)="openDialog()" mat-fab color="primary"
+        aria-label="Example icon button with a delete icon">
+        <mat-icon>edit</mat-icon>
+      </button>
 
-</div>
+    </div>
 
+  </mat-card-content>
+</mat-card>

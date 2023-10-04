@@ -49,6 +49,13 @@
         <span>Registrar Castigos</span>
       </button>
 
+      <mat-divider></mat-divider>
+
+      <button mat-menu-item (click)="drawer.toggle()" routerLink="/tipo_operacion" style="cursor: pointer">
+        <mat-icon>InventorySharpIcon</mat-icon>
+        <span>Registrar T. Operacion</span>
+      </button>
+
     </mat-drawer>
 
     <router-outlet></router-outlet>

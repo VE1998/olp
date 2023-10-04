@@ -1,6 +1,7 @@
 import { UnidadMedida } from './../../../_model/unidadmedida';
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
+import { switchMap } from 'rxjs';
 import { UnidadmedidaService } from 'src/app/_service/unidadmedida.service';
 
 @Component({
@@ -30,13 +31,13 @@ export class UnidadmedidaDialogComponent implements OnInit {
     this.dialogRef.closeAll();
   }
 
-  operar() {debugger
+  operar() {
     if (this.um != null && this.um.codigo_um != null) {debugger
-      this.unidadmedidaService.modificar(this.um).subscribe(() => {
-        this.unidadmedidaService.listar().subscribe((um) => {
-          this.unidadmedidaService.unidadMedidaCambio.next(um);
-          this.unidadmedidaService.mensajeCambio.next('Modificacion Correcta');
-        });
+      this.unidadmedidaService.modificar(this.um).pipe( switchMap( () => {
+         return this.unidadmedidaService.listar();
+      })).subscribe( unidadmedida => {
+         this.unidadmedidaService.unidadMedidaCambio.next(unidadmedida);
+         this.unidadmedidaService.mensajeCambio.next('MODIFICACION CORRECTA');
       });
     } else {
       this.unidadmedidaService.registrar(this.um).subscribe(() => {
