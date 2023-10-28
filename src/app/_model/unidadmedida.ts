@@ -3,6 +3,4 @@ export class UnidadMedida{
   descripcion: string | undefined;
   codigo_onu: string | undefined;
   codigo_sunat: string | undefined;
-
-
 }
