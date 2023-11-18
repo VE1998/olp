@@ -78,7 +78,7 @@ export class UnidadmedidaComponent implements OnInit {
     let uni = unidadmedida != null ? unidadmedida: new UnidadMedida();
 
     this.dialog.open(UnidadmedidaDialogComponent, {
-      width: '250px',
+      width: '300px',
       data: uni,
     });
   }

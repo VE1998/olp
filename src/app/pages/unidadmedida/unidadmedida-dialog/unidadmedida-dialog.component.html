@@ -1,13 +1,22 @@
 <div>
-  <mat-form-field>
-    <input matInput placeholder="Descripcion" [(ngModel)]="um.descripcion">
-  </mat-form-field>
-  <mat-form-field>
-    <input matInput placeholder="Codigo Onu" [(ngModel)]="um.codigo_onu" >
-  </mat-form-field>
-  <mat-form-field>
-    <input matInput placeholder="Codigo Sunat" [(ngModel)]="um.codigo_sunat" >
-  </mat-form-field>
+  <h1 mat-dialog-title>Registrar</h1>
+  <div mat-dialog-content>
+    <div style="display: flex;flex-direction: column; margin:1rem auto; max-width: 600px; padding: 1rem;">
+      <mat-form-field>
+        <input matInput placeholder="Descripcion" [(ngModel)]="um.descripcion">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Codigo Onu" [(ngModel)]="um.codigo_onu" >
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Codigo Sunat" [(ngModel)]="um.codigo_sunat" >
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div mat-dialog-actions>
+    <button mat-button (click)="cancelar()">Cancelar</button>
+        <button mat-button (click)="operar()" cdkFocusInitial>Confirmar</button>
+  </div>
 </div>
-<button mat-raised-button color="primary" (click)="operar()">Primary</button>
-<button mat-raised-button color="dark" (click)="cancelar()" >Cancelar</button>
+
