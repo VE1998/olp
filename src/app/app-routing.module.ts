@@ -5,6 +5,7 @@ import { SectorEdicionComponent } from './pages/sector/sector-edicion/SectorEdic
 import { UnidadmedidaComponent } from './pages/unidadmedida/unidadmedida.component';
 import { CriteriocalidadComponent } from './pages/criteriocalidad/criteriocalidad.component';
 import { TipoOeracionComponent } from './pages/tipo-operacion/tipo-oeracion.component';
+import { BancoComponent } from './pages/banco/banco.component';
 
 const routes: Routes = [
   { path: 'sector', component: SectorComponent, children: [
@@ -13,7 +14,8 @@ const routes: Routes = [
   ] },
   { path: 'unidadmedida', component: UnidadmedidaComponent},
   { path: 'criteriocalidad', component: CriteriocalidadComponent},
-  { path: 'tipo_operacion', component: TipoOeracionComponent}
+  { path: 'tipo_operacion', component: TipoOeracionComponent},
+  { path: 'banco', component: BancoComponent}
 ];
 
 @NgModule({

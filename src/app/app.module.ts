@@ -15,6 +15,8 @@ import { CriteriocalidadComponent } from './pages/criteriocalidad/criteriocalida
 import { CriteriocalidadDialogComponent } from './pages/criteriocalidad/criteriocalidad-dialog/criteriocalidad-dialog.component';
 import { TipoOeracionComponent } from './pages/tipo-operacion/tipo-oeracion.component';
 import { TipoOperacionDialogComponent } from './pages/tipo-operacion/tipo-operacion-dialog/tipo-operacion-dialog.component';
+import { BancoComponent } from './pages/banco/banco.component';
+import { BancoDialogComponent } from './pages/banco/banco-dialog/banco-dialog.component';
 
 
 @NgModule({
@@ -28,6 +30,8 @@ import { TipoOperacionDialogComponent } from './pages/tipo-operacion/tipo-operac
     CriteriocalidadDialogComponent,
     TipoOeracionComponent,
     TipoOperacionDialogComponent,
+    BancoComponent,
+    BancoDialogComponent,
   ],
   imports: [
     BrowserModule,
