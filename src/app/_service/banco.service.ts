@@ -9,26 +9,26 @@ import { HttpClient } from '@angular/common/http';
 })
 export class BancoService {
 
-  sectorCambio = new Subject<Banco[]>();
+  bancoCambio = new Subject<Banco[]>();
   mensajeCambio = new Subject<string>();
 
   url: string = `${environment.HOST}/bancos`;
 
-  constructor( private http : HttpClient) { }
+  constructor(private http: HttpClient) { }
 
-  listar(){
+  listar() {
     return this.http.get<Banco[]>(this.url);
-   }
+  }
 
-   listaPorId(id_banco: number){
+  listaPorId(id_banco: number) {
     return this.http.get<Banco>(`${this.url}/${id_banco}`);
-   }
+  }
 
-   registrar(banco: Banco){
+  registrar(banco: Banco) {
     return this.http.post(this.url, banco);
-   }
+  }
 
-   modificar(banco: Banco){
-     return this.http.put(this.url, banco);
-    }
+  modificar(banco: Banco) {
+    return this.http.put(this.url, banco);
+  }
 }
