@@ -28,32 +28,9 @@
     <mat-drawer #drawer class="example-sidenav" mode="side">
       <img src="assets/logo_olpasa.png" width="150" height="60" style="margin-left: 20px" />
 
-      <mat-divider></mat-divider>
-
-      <button mat-menu-item (click)="drawer.toggle()" routerLink="/sector" style="cursor: pointer">
-        <mat-icon>search</mat-icon>
-        <span>Sector</span>
-      </button>
-
-      <mat-divider></mat-divider>
-
-      <button mat-menu-item (click)="drawer.toggle()" routerLink="/unidadmedida" style="cursor: pointer">
+      <button mat-menu-item (click)="drawer.toggle()" routerLink="/bancos" style="cursor: pointer">
         <mat-icon>search</mat-icon>
         <span>Unidad Medida</span>
-      </button>
-
-      <mat-divider></mat-divider>
-
-      <button mat-menu-item (click)="drawer.toggle()" routerLink="/criteriocalidad" style="cursor: pointer">
-        <mat-icon>InventorySharpIcon</mat-icon>
-        <span>Registrar Castigos</span>
-      </button>
-
-      <mat-divider></mat-divider>
-
-      <button mat-menu-item (click)="drawer.toggle()" routerLink="/tipo_operacion" style="cursor: pointer">
-        <mat-icon>InventorySharpIcon</mat-icon>
-        <span>Registrar T. Operacion</span>
       </button>
 
     </mat-drawer>

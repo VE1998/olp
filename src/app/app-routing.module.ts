@@ -15,7 +15,7 @@ const routes: Routes = [
   { path: 'unidadmedida', component: UnidadmedidaComponent},
   { path: 'criteriocalidad', component: CriteriocalidadComponent},
   { path: 'tipo_operacion', component: TipoOeracionComponent},
-  { path: 'banco', component: BancoComponent}
+  { path: 'bancos', component: BancoComponent}
 ];
 
 @NgModule({
