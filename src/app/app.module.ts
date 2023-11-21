@@ -30,6 +30,19 @@ import { PesajeComponent } from './pages/pesaje/pesaje.component';
 import { ProductoComponent } from './pages/producto/producto.component';
 import { ProveedorComponent } from './pages/proveedor/proveedor.component';
 import { VehiculoComponent } from './pages/vehiculo/vehiculo.component';
+import { ConductorDialogComponent } from './pages/conductor/conductor-dialog/conductor-dialog.component';
+import { ClasificacionDialogComponent } from './pages/clasificacion/clasificacion-dialog/clasificacion-dialog.component';
+import { ClasificacionContableDialogComponent } from './pages/clasificacion-contable/clasificacion-contable-dialog/clasificacion-contable-dialog.component';
+import { CriterioCalidadDialogComponent } from './pages/criterio-calidad/criterio-calidad-dialog/criterio-calidad-dialog.component';
+import { CuentaBancariaDialogComponent } from './pages/cuenta-bancaria/cuenta-bancaria-dialog/cuenta-bancaria-dialog.component';
+import { EmpresaTransporteDialogComponent } from './pages/empresa-transporte/empresa-transporte-dialog/empresa-transporte-dialog.component';
+import { EvaluacionCalidadDialogComponent } from './pages/evaluacion-calidad/evaluacion-calidad-dialog/evaluacion-calidad-dialog.component';
+import { ParcelaDialogComponent } from './pages/parcela/parcela-dialog/parcela-dialog.component';
+import { PersonaDialogComponent } from './pages/persona/persona-dialog/persona-dialog.component';
+import { PesajeDialogComponent } from './pages/pesaje/pesaje-dialog/pesaje-dialog.component';
+import { ProductoDialogComponent } from './pages/producto/producto-dialog/producto-dialog.component';
+import { ProveedorDialogComponent } from './pages/proveedor/proveedor-dialog/proveedor-dialog.component';
+import { VehiculoDialogComponent } from './pages/vehiculo/vehiculo-dialog/vehiculo-dialog.component';
 
 
 @NgModule({
@@ -58,6 +71,19 @@ import { VehiculoComponent } from './pages/vehiculo/vehiculo.component';
     ProductoComponent,
     ProveedorComponent,
     VehiculoComponent,
+    ConductorDialogComponent,
+    ClasificacionDialogComponent,
+    ClasificacionContableDialogComponent,
+    CriterioCalidadDialogComponent,
+    CuentaBancariaDialogComponent,
+    EmpresaTransporteDialogComponent,
+    EvaluacionCalidadDialogComponent,
+    ParcelaDialogComponent,
+    PersonaDialogComponent,
+    PesajeDialogComponent,
+    ProductoDialogComponent,
+    ProveedorDialogComponent,
+    VehiculoDialogComponent,
   ],
   imports: [
     BrowserModule,
