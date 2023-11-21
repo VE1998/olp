@@ -17,6 +17,19 @@ import { TipoOeracionComponent } from './pages/tipo-operacion/tipo-oeracion.comp
 import { TipoOperacionDialogComponent } from './pages/tipo-operacion/tipo-operacion-dialog/tipo-operacion-dialog.component';
 import { BancoComponent } from './pages/banco/banco.component';
 import { BancoDialogComponent } from './pages/banco/banco-dialog/banco-dialog.component';
+import { ClasificacionContableComponent } from './pages/clasificacion-contable/clasificacion-contable.component';
+import { ClasificacionComponent } from './pages/clasificacion/clasificacion.component';
+import { ConductorComponent } from './pages/conductor/conductor.component';
+import { CriterioCalidadComponent } from './pages/criterio-calidad/criterio-calidad.component';
+import { CuentaBancariaComponent } from './pages/cuenta-bancaria/cuenta-bancaria.component';
+import { EmpresaTransporteComponent } from './pages/empresa-transporte/empresa-transporte.component';
+import { EvaluacionCalidadComponent } from './pages/evaluacion-calidad/evaluacion-calidad.component';
+import { ParcelaComponent } from './pages/parcela/parcela.component';
+import { PersonaComponent } from './pages/persona/persona.component';
+import { PesajeComponent } from './pages/pesaje/pesaje.component';
+import { ProductoComponent } from './pages/producto/producto.component';
+import { ProveedorComponent } from './pages/proveedor/proveedor.component';
+import { VehiculoComponent } from './pages/vehiculo/vehiculo.component';
 
 
 @NgModule({
@@ -32,6 +45,19 @@ import { BancoDialogComponent } from './pages/banco/banco-dialog/banco-dialog.co
     TipoOperacionDialogComponent,
     BancoComponent,
     BancoDialogComponent,
+    ClasificacionContableComponent,
+    ClasificacionComponent,
+    ConductorComponent,
+    CriterioCalidadComponent,
+    CuentaBancariaComponent,
+    EmpresaTransporteComponent,
+    EvaluacionCalidadComponent,
+    ParcelaComponent,
+    PersonaComponent,
+    PesajeComponent,
+    ProductoComponent,
+    ProveedorComponent,
+    VehiculoComponent,
   ],
   imports: [
     BrowserModule,

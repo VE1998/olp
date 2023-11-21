@@ -16,10 +16,9 @@ export class UnidadmedidaDialogComponent implements OnInit {
     private dialogRef: MatDialog,
     @Inject(MAT_DIALOG_DATA) private data: UnidadMedida,
     private unidadmedidaService: UnidadmedidaService
-  ) {}
+  ) { }
 
   ngOnInit() {
-
     this.um = new UnidadMedida();
     this.um.codigo_um = this.data.codigo_um;
     (this.um.descripcion = this.data.descripcion),
@@ -32,13 +31,19 @@ export class UnidadmedidaDialogComponent implements OnInit {
   }
 
   operar() {
-    if (this.um != null && this.um.codigo_um != null) {debugger
-      this.unidadmedidaService.modificar(this.um).pipe( switchMap( () => {
-         return this.unidadmedidaService.listar();
-      })).subscribe( unidadmedida => {
-         this.unidadmedidaService.unidadMedidaCambio.next(unidadmedida);
-         this.unidadmedidaService.mensajeCambio.next('MODIFICACION CORRECTA');
-      });
+    if (this.um != null && this.um.codigo_um != null) {
+      debugger;
+      this.unidadmedidaService
+        .modificar(this.um)
+        .pipe(
+          switchMap(() => {
+            return this.unidadmedidaService.listar();
+          })
+        )
+        .subscribe((unidadmedida) => {
+          this.unidadmedidaService.unidadMedidaCambio.next(unidadmedida);
+          this.unidadmedidaService.mensajeCambio.next('MODIFICACION CORRECTA');
+        });
     } else {
       this.unidadmedidaService.registrar(this.um).subscribe(() => {
         this.unidadmedidaService.listar().subscribe((um) => {
