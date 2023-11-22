@@ -6,6 +6,7 @@ import { UnidadmedidaComponent } from './pages/unidadmedida/unidadmedida.compone
 import { CriteriocalidadComponent } from './pages/criteriocalidad/criteriocalidad.component';
 import { TipoOeracionComponent } from './pages/tipo-operacion/tipo-oeracion.component';
 import { BancoComponent } from './pages/banco/banco.component';
+import { EvaluacionCalidadComponent } from './pages/evaluacion-calidad/evaluacion-calidad.component';
 
 const routes: Routes = [
   { path: 'sector', component: SectorComponent, children: [
@@ -15,7 +16,8 @@ const routes: Routes = [
   { path: 'unidadmedida', component: UnidadmedidaComponent},
   { path: 'criteriocalidad', component: CriteriocalidadComponent},
   { path: 'tipo_operacion', component: TipoOeracionComponent},
-  { path: 'bancos', component: BancoComponent}
+  { path: 'bancos', component: BancoComponent},
+  { path: 'evaluacion', component: EvaluacionCalidadComponent}
 ];
 
 @NgModule({
