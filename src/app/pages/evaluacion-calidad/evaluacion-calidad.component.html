@@ -1,59 +1,59 @@
 <mat-card>
-    <mat-card-content>
-        <div class="demo-button-container">
-            <button mat-raised-button class="demo-button">
-                NUEVO
-            </button>
-        </div>
-    </mat-card-content>
+  <mat-card-content>
+    <div class="demo-button-container">
+      <button mat-raised-button class="demo-button">
+        NUEVO
+      </button>
+    </div>
+  </mat-card-content>
 </mat-card>
 
 
 <mat-card>
-    <mat-card-content>
-        <div class="mat-elevation-z8">
-            <table mat-table [dataSource]="dataSource" matSort>
-              <!-- ID Column -->
-              <ng-container matColumnDef="numTiket">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header>Numero Tiket</th>
-                <td mat-cell *matCellDef="let row">{{ row.num_ticket }}</td>
-              </ng-container>
-      
-              <!-- Progress Column -->
-              <ng-container matColumnDef="persona">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header>Persona</th>
-                <td mat-cell *matCellDef="let row">{{ row.codigo.nombres}}</td>
-              </ng-container>
-      
-              <!-- Name Column -->
-              <ng-container matColumnDef="operacion">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header>Operacion</th>
-                <td mat-cell *matCellDef="let row">{{ row.tipo_operacion
-                }}</td>
-              </ng-container>
-      
-              <!-- Fruit Column -->
-              <ng-container matColumnDef="producto">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header>Producto</th>
-                <td mat-cell *matCellDef="let row">{{ row.codigo_sunat }}</td>
-              </ng-container>
-      
-              <ng-container matColumnDef="acciones">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header>Acciones</th>
-                <td mat-cell *matCellDef="let row">
-                  <div class="example-button-container">
-                    <button (click)="openDialog(row)" mat-mini-fab color="primary"
-                      aria-label="Example icon button with a menu icon">
-                      <mat-icon>explicit</mat-icon>
-                    </button>
-                  </div>
-                </td>
-              </ng-container>
-      
-              <tr mat-header-row *matHeaderRowDef="displeyedColumns"></tr>
-              <tr mat-row *matRowDef="let row; columns: displeyedColumns"></tr>
-            </table>
-            <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>     
-          </div>
-    </mat-card-content>
+  <mat-card-content>
+    <div class="mat-elevation-z8">
+      <table mat-table [dataSource]="dataSource" matSort>
+        <!-- ID Column -->
+        <ng-container matColumnDef="numTiket">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Numero Tiket</th>
+          <td mat-cell *matCellDef="let row">{{ row.num_ticket }}</td>
+        </ng-container>
+
+        <!-- Progress Column -->
+        <ng-container matColumnDef="persona">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Persona</th>
+          <td mat-cell *matCellDef="let row">{{ row.codigo.nombres}}</td>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="operacion">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Operacion</th>
+          <td mat-cell *matCellDef="let row">{{ row.tipo_operacion
+            }}</td>
+        </ng-container>
+
+        <!-- Fruit Column -->
+        <ng-container matColumnDef="producto">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Producto</th>
+          <td mat-cell *matCellDef="let row">{{ row.codigo_sunat }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="acciones">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Acciones</th>
+          <td mat-cell *matCellDef="let row">
+            <div class="example-button-container">
+              <button (click)="openDialog(row)" mat-mini-fab color="primary"
+                aria-label="Example icon button with a menu icon">
+                <mat-icon>explicit</mat-icon>
+              </button>
+            </div>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displeyedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displeyedColumns"></tr>
+      </table>
+      <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+    </div>
+  </mat-card-content>
 </mat-card>

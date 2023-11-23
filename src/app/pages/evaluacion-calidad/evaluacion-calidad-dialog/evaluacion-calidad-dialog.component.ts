@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Pesaje } from 'src/app/_model/pesaje';
 
 @Component({
   selector: 'app-evaluacion-calidad-dialog',
@@ -6,5 +7,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./evaluacion-calidad-dialog.component.css']
 })
 export class EvaluacionCalidadDialogComponent {
+
+  pesa !: Pesaje;
 
 }

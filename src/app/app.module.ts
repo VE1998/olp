@@ -43,6 +43,8 @@ import { PesajeDialogComponent } from './pages/pesaje/pesaje-dialog/pesaje-dialo
 import { ProductoDialogComponent } from './pages/producto/producto-dialog/producto-dialog.component';
 import { ProveedorDialogComponent } from './pages/proveedor/proveedor-dialog/proveedor-dialog.component';
 import { VehiculoDialogComponent } from './pages/vehiculo/vehiculo-dialog/vehiculo-dialog.component';
+import { DestararComponent } from './pages/destarar/destarar.component';
+import { RegistrarEvaluacionComponent } from './pages/destarar/registrar-evaluacion/registrar-evaluacion.component';
 
 
 @NgModule({
@@ -84,6 +86,8 @@ import { VehiculoDialogComponent } from './pages/vehiculo/vehiculo-dialog/vehicu
     ProductoDialogComponent,
     ProveedorDialogComponent,
     VehiculoDialogComponent,
+    DestararComponent,
+    RegistrarEvaluacionComponent,
   ],
   imports: [
     BrowserModule,
