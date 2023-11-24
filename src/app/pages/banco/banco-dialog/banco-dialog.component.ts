@@ -19,14 +19,12 @@ export class BancoDialogComponent implements OnInit{
     private BancoService: BancoService
    ){}
 
-  ngOnInit() {
+  ngOnInit() {debugger
 
     this.ban = new Banco();
     this.ban.id_banco = this.data.id_banco;
     (this.ban.nombre = this.data.nombre);
     (this.ban.descripcion = this.data.descripcion);
-
-
   }
 
   cancelar() {

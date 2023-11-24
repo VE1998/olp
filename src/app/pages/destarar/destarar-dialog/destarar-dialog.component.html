@@ -1,0 +1,20 @@
+<div>
+  <h1 mat-dialog-title>Registrar</h1>
+  <div mat-dialog-content>
+    <div style="display: flex;flex-direction: column; margin:1rem auto; max-width: 600px; padding: 1rem;">
+      <mat-form-field>
+        <input matInput placeholder="000235287" [(ngModel)]="pesajes.num_ticket">
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="Victor" [(ngModel)]="pesajes.persona.nombres">
+      </mat-form-field>
+
+    </div>
+  </div>
+
+  <div mat-dialog-actions>
+    <button mat-button (click)="cancelar()">Cancelar</button>
+        <button mat-button cdkFocusInitial>Confirmar</button>
+  </div>
+</div>

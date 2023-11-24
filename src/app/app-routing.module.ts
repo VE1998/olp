@@ -8,7 +8,6 @@ import { TipoOeracionComponent } from './pages/tipo-operacion/tipo-oeracion.comp
 import { BancoComponent } from './pages/banco/banco.component';
 import { EvaluacionCalidadComponent } from './pages/evaluacion-calidad/evaluacion-calidad.component';
 import { DestararComponent } from './pages/destarar/destarar.component';
-import { RegistrarEvaluacionComponent } from './pages/destarar/registrar-evaluacion/registrar-evaluacion.component';
 
 const routes: Routes = [
   { path: 'sector', component: SectorComponent, children: [

@@ -9,7 +9,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class PesajeService {
 
-  PesajeCambio = new Subject<Pesaje[]>();
+  pesajeCambio = new Subject<Pesaje[]>();
   mensajeCambio = new Subject<string>();
 
   url: string = `${environment.HOST}/pesajes`;

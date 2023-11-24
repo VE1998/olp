@@ -44,7 +44,7 @@ import { ProductoDialogComponent } from './pages/producto/producto-dialog/produc
 import { ProveedorDialogComponent } from './pages/proveedor/proveedor-dialog/proveedor-dialog.component';
 import { VehiculoDialogComponent } from './pages/vehiculo/vehiculo-dialog/vehiculo-dialog.component';
 import { DestararComponent } from './pages/destarar/destarar.component';
-import { RegistrarEvaluacionComponent } from './pages/destarar/registrar-evaluacion/registrar-evaluacion.component';
+import { DestararDialogComponent } from './pages/destarar/destarar-dialog/destarar-dialog.component';
 
 
 @NgModule({
@@ -87,7 +87,8 @@ import { RegistrarEvaluacionComponent } from './pages/destarar/registrar-evaluac
     ProveedorDialogComponent,
     VehiculoDialogComponent,
     DestararComponent,
-    RegistrarEvaluacionComponent,
+    DestararDialogComponent,
+
   ],
   imports: [
     BrowserModule,
