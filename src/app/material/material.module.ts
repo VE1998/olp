@@ -17,6 +17,8 @@ import {MatTreeModule} from '@angular/material/tree';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatGridListModule} from '@angular/material/grid-list';
+import { ReactiveFormsModule } from '@angular/forms';
+import {MatTabsModule} from '@angular/material/tabs';
 
 
 
@@ -40,7 +42,9 @@ import {MatGridListModule} from '@angular/material/grid-list';
     MatTreeModule,
     MatMenuModule,
     MatDialogModule,
-    MatGridListModule
+    MatGridListModule,
+    ReactiveFormsModule,
+    MatTabsModule
   ], exports: [
     MatTableModule,
     MatButtonModule,
@@ -57,7 +61,9 @@ import {MatGridListModule} from '@angular/material/grid-list';
     MatToolbarModule,
     MatTreeModule,
     MatMenuModule,
-    MatDialogModule,MatGridListModule
+    MatDialogModule,MatGridListModule,
+    ReactiveFormsModule,
+    MatTabsModule
   ]
 })
 export class MaterialModule { }

@@ -47,6 +47,7 @@ import { DestararComponent } from './pages/destarar/destarar.component';
 import { DestararDialogComponent } from './pages/destarar/destarar-dialog/destarar-dialog.component';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
