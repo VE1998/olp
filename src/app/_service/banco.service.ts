@@ -31,4 +31,5 @@ export class BancoService {
   modificar(banco: Banco) {
     return this.http.put(this.url, banco);
   }
+
 }

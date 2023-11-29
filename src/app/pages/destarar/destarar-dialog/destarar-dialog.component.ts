@@ -6,6 +6,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { EvaluacionCalidad } from 'src/app/_model/evaluacion_calidad';
 import { Pesaje } from 'src/app/_model/pesaje';
+import { EvaluacionCalidadService } from 'src/app/_service/evaluacion-calidad.service';
 import { PesajeService } from 'src/app/_service/pesaje.service';
 
 @Component({
@@ -32,7 +33,7 @@ export class DestararDialogComponent implements OnInit{
 
   pesajes!: Pesaje;
 
-  constructor(
+  constructor(private evaluacionCalidadService: EvaluacionCalidadService,
     private dialogRef: MatDialog,
     @Inject(MAT_DIALOG_DATA) private data: Pesaje,
     private PesajeService: PesajeService
@@ -42,7 +43,16 @@ export class DestararDialogComponent implements OnInit{
 
     this.pesajes = new Pesaje();
     this.pesajes.num_ticket = this.data.num_ticket;
-  
+
+
+
+    this.evaluacionCalidadService.listar().subscribe((data) => {
+      this.dataSource = new MatTableDataSource(data);
+      this.dataSource.sort = this.sort;
+      this.dataSource.paginator = this.paginator;
+      console.log(data);
+    });
+
 
   }
 

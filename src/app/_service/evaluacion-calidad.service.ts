@@ -1,9 +1,35 @@
 import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
+import { EvaluacionCalidad } from '../_model/evaluacion_calidad';
+import { environment } from 'src/environments/environment.development';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EvaluacionCalidadService {
 
-  constructor() { }
+  evaluacionCalidadCambio = new Subject<EvaluacionCalidad[]>();
+  mensajeCambio = new Subject<string>();
+
+  url: string = `${environment.HOST}/bancos`;
+
+  constructor(private http: HttpClient) { }
+
+  listar() {
+    return this.http.get<EvaluacionCalidad[]>(this.url);
+  }
+
+  listaPorId(id_evaluacion: number) {
+    return this.http.get<EvaluacionCalidad>(`${this.url}/${id_evaluacion}`);
+  }
+
+  registrar(evaluacionCalidad: EvaluacionCalidad) {
+    return this.http.post(this.url, evaluacionCalidad);
+  }
+
+  modificar(evaluacionCalidad: EvaluacionCalidad) {
+    return this.http.put(this.url, evaluacionCalidad);
+  }
+
 }
