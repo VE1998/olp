@@ -9,4 +9,9 @@ export class AppComponent {
   title = 'Sistema Olpasa';
 
   showFiller = false;
+
+  badgevisible = false;
+  badgevisibility() {
+    this.badgevisible = true;
+  }
 }

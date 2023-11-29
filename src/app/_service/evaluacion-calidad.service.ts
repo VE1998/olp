@@ -12,7 +12,7 @@ export class EvaluacionCalidadService {
   evaluacionCalidadCambio = new Subject<EvaluacionCalidad[]>();
   mensajeCambio = new Subject<string>();
 
-  url: string = `${environment.HOST}/bancos`;
+  url: string = `${environment.HOST}/evaluacioncalidades`;
 
   constructor(private http: HttpClient) { }
 
@@ -22,6 +22,10 @@ export class EvaluacionCalidadService {
 
   listaPorId(id_evaluacion: number) {
     return this.http.get<EvaluacionCalidad>(`${this.url}/${id_evaluacion}`);
+  }
+
+  listarPorIdPesaje(id_pesaje: number) {
+    return this.http.get<EvaluacionCalidad>(`${this.url}/destarar/${id_pesaje}`);
   }
 
   registrar(evaluacionCalidad: EvaluacionCalidad) {

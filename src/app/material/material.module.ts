@@ -19,6 +19,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {MatGridListModule} from '@angular/material/grid-list';
 import { ReactiveFormsModule } from '@angular/forms';
 import {MatTabsModule} from '@angular/material/tabs';
+import {MatListModule} from '@angular/material/list';
 
 
 
@@ -44,7 +45,8 @@ import {MatTabsModule} from '@angular/material/tabs';
     MatDialogModule,
     MatGridListModule,
     ReactiveFormsModule,
-    MatTabsModule
+    MatTabsModule,
+    MatListModule
   ], exports: [
     MatTableModule,
     MatButtonModule,
@@ -63,7 +65,8 @@ import {MatTabsModule} from '@angular/material/tabs';
     MatMenuModule,
     MatDialogModule,MatGridListModule,
     ReactiveFormsModule,
-    MatTabsModule
+    MatTabsModule,
+    MatListModule
   ]
 })
 export class MaterialModule { }

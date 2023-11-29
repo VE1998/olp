@@ -21,7 +21,6 @@ export class DestararComponent implements OnInit{
     'numTiket',
     'persona',
     'operacion',
-    'producto',
     'acciones',
   ];
 
@@ -67,6 +66,7 @@ export class DestararComponent implements OnInit{
       this.dataSource.sort = this.sort;
       this.dataSource.paginator = this.paginator;
       console.log(data);
+      
     });
 
   }

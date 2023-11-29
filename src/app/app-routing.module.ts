@@ -8,6 +8,7 @@ import { TipoOeracionComponent } from './pages/tipo-operacion/tipo-oeracion.comp
 import { BancoComponent } from './pages/banco/banco.component';
 import { EvaluacionCalidadComponent } from './pages/evaluacion-calidad/evaluacion-calidad.component';
 import { DestararComponent } from './pages/destarar/destarar.component';
+import { ParcelaComponent } from './pages/parcela/parcela.component';
 
 const routes: Routes = [
   { path: 'sector', component: SectorComponent, children: [
@@ -19,7 +20,9 @@ const routes: Routes = [
   { path: 'tipo_operacion', component: TipoOeracionComponent},
   { path: 'bancos', component: BancoComponent},
   { path: 'evaluacion', component: EvaluacionCalidadComponent},
-  { path: 'destarar', component: DestararComponent}
+  { path: 'destarar', component: DestararComponent},
+  { path: 'parcela', component: ParcelaComponent}
+  
 ];
 
 @NgModule({
