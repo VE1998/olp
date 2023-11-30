@@ -3,32 +3,35 @@ import { Subject } from 'rxjs';
 import { environment } from 'src/environments/environment.development';
 import { Sector } from '../_model/sector';
 import { HttpClient } from '@angular/common/http';
+import { CriterioCalidad } from '../_model/criterio_calidad';
+
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class CriteriocalidadService {
 
-  criterioCalidadCambio = new Subject<Sector[]>();
+  criterioCalidadCambio = new Subject<CriterioCalidad[]>();
   mensajeCambio = new Subject<string>();
 
-  url: string = `${environment.HOST}/sectores`;
+  url: string = `${environment.HOST}/criterio_calidades`;
 
   constructor(private http : HttpClient) { }
 
   listar(){
-   return this.http.get<Sector[]>(this.url);
+   return this.http.get<CriterioCalidad[]>(this.url);
   }
 
-  listaPorId(idSector: number){
-   return this.http.get<Sector>(`${this.url}/${idSector}`);
+  listaPorId(id_criterio: number){
+   return this.http.get<CriterioCalidad>(`${this.url}/${id_criterio}`);
   }
 
-  registrar(sector: Sector){
-   return this.http.post(this.url, sector);
+  registrar(criterio: CriterioCalidad){
+   return this.http.post(this.url, criterio);
   }
 
-  modificar(sector: Sector){
-    return this.http.post(this.url, sector);
+  modificar(criterio: CriterioCalidad){
+    return this.http.post(this.url, criterio);
    }
 }

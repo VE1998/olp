@@ -4,7 +4,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { CriterioCalidad } from 'src/app/_model/criteriocalidad';
+import { CriterioCalidad } from 'src/app/_model/criterio_calidad';
 import { CriteriocalidadService } from 'src/app/_service/criteriocalidad.service';
 
 @Component({

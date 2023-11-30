@@ -16,7 +16,6 @@ const routes: Routes = [
     { path: 'editar/:id_sector', component: SectorEdicionComponent}
   ] },
   { path: 'unidadmedida', component: UnidadmedidaComponent},
-  { path: 'criteriocalidad', component: CriteriocalidadComponent},
   { path: 'tipo_operacion', component: TipoOeracionComponent},
   { path: 'bancos', component: BancoComponent},
   { path: 'evaluacion', component: EvaluacionCalidadComponent},

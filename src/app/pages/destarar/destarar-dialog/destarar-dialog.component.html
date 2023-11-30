@@ -6,11 +6,11 @@
   <div class="row">
     <mat-form-field appearance="outline">
       <mat-label>Num Tiket</mat-label>
-      <input matInput type="text" placeholder="00252387">
+      <input matInput [(ngModel)]="pesajes.num_ticket" type="text" placeholder="00252387">
     </mat-form-field>
     <mat-form-field appearance="outline">
-      <mat-label>Last Name</mat-label>
-      <input matInput placeholder="Ex. Babaji">
+      <mat-label>Proveedor</mat-label>
+      <input matInput placeholder="Ex. Babaji" [(ngModel)]="nombreApellido">
     </mat-form-field>
   </div>
 
@@ -24,9 +24,9 @@
       <div class="row">
         <mat-form-field>
           <mat-label>Criterio Calidad</mat-label>
-          <mat-select>
-            <mat-option *ngFor="let food of foods" [value]="food.value">
-              {{food.viewValue}}
+          <mat-select [(ngModel)]="selectedValue" [(value)]="idCriterioSeleccionado">
+            <mat-option *ngFor="let c of criterios" [value]="c.id_criterio">
+              {{ c.descripcion }}
             </mat-option>
           </mat-select>
         </mat-form-field>
@@ -62,7 +62,7 @@
 
     </mat-card-content>
     <mat-card-actions>
-      <button mat-button>Guardar</button>
+      <button (click)="registrar()" mat-button>Guardar</button>
       <button mat-button>SHARE</button>
     </mat-card-actions>
   </mat-card>

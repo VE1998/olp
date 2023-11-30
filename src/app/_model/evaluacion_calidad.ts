@@ -1,4 +1,5 @@
-import { CriterioCalidad } from "./criteriocalidad";
+
+import { CriterioCalidad } from "./criterio_calidad";
 import { Pesaje } from "./pesaje";
 
 export class EvaluacionCalidad{
