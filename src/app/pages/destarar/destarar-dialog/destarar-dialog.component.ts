@@ -99,7 +99,7 @@ export class DestararDialogComponent implements OnInit {
     this.idCriterioSeleccionado = event.target.value;
   }
 
-  registrar() {
+  registrar() {debugger
     if (this.eva != null && this.eva.id_evaluacion != null) {
       this.evaluacionCalidadService.modificar(this.eva)
         .pipe( switchMap(() => {
