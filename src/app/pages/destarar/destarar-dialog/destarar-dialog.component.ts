@@ -2,6 +2,7 @@ import { Component, Inject, OnInit, ViewChild } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { switchMap } from 'rxjs';
@@ -57,7 +58,8 @@ export class DestararDialogComponent implements OnInit {
     private evaluacionCalidadService: EvaluacionCalidadService,
     private dialogRef: MatDialog,
     @Inject(MAT_DIALOG_DATA) private data: Pesaje,
-    private PesajeService: PesajeService
+    private PesajeService: PesajeService,
+    private snackBar: MatSnackBar
   ) {}
 
   ngOnInit() {
@@ -100,24 +102,28 @@ export class DestararDialogComponent implements OnInit {
   }
 
   registrar() {debugger
-    if (this.eva != null && this.eva.id_evaluacion != null) {
-      this.evaluacionCalidadService.modificar(this.eva)
-        .pipe( switchMap(() => {
-            return this.evaluacionCalidadService.listar();
-          })
-        )
-        .subscribe((banco) => {
-          this.evaluacionCalidadService.evaluacionCalidadCambio.next(banco);
-          this.evaluacionCalidadService.mensajeCambio.next('MODIFICACION CORRECTA');
-        });
-    } else {
-      this.evaluacionCalidadService.registrar(this.eva).subscribe(() => {
-        this.evaluacionCalidadService.listar().subscribe((um) => {
-          this.evaluacionCalidadService.evaluacionCalidadCambio.next(um);
-          this.evaluacionCalidadService.mensajeCambio.next('Registro Correcto');
-        });
-      });
-    }
-    this.dialogRef.closeAll();
+    let pesaje = new Pesaje();
+    pesaje.id_pesaje = this.data.id_pesaje;
+
+    let criterio = new CriterioCalidad();
+    criterio.id_criterio = this.idCriterioSeleccionado;
+
+
+    let evauacion_rff = new EvaluacionCalidad();
+    evauacion_rff.pesaje = pesaje;
+    evauacion_rff.criterio_calidad = criterio;
+
+    this.evaluacionCalidadService.registrar(evauacion_rff).subscribe( () => {
+      this.snackBar.open("se registro", "aviso", { duration: 2000});
+
+      setTimeout( () => {
+        this.limpiar();
+      }, 2000);
+    });
+
+  }
+
+  limpiar(){
+    
   }
 }
