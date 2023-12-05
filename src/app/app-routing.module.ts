@@ -3,12 +3,12 @@ import { RouterModule, Routes } from '@angular/router';
 import { SectorComponent } from './pages/sector/sector.component';
 import { SectorEdicionComponent } from './pages/sector/sector-edicion/SectorEdicionComponent';
 import { UnidadmedidaComponent } from './pages/unidadmedida/unidadmedida.component';
-import { CriteriocalidadComponent } from './pages/criteriocalidad/criteriocalidad.component';
 import { TipoOeracionComponent } from './pages/tipo-operacion/tipo-oeracion.component';
 import { BancoComponent } from './pages/banco/banco.component';
 import { EvaluacionCalidadComponent } from './pages/evaluacion-calidad/evaluacion-calidad.component';
 import { DestararComponent } from './pages/destarar/destarar.component';
 import { ParcelaComponent } from './pages/parcela/parcela.component';
+import { CriterioCalidadComponent } from './pages/criterio-calidad/criterio-calidad.component';
 
 const routes: Routes = [
   { path: 'sector', component: SectorComponent, children: [
@@ -20,7 +20,8 @@ const routes: Routes = [
   { path: 'bancos', component: BancoComponent},
   { path: 'evaluacion', component: EvaluacionCalidadComponent},
   { path: 'destarar', component: DestararComponent},
-  { path: 'parcela', component: ParcelaComponent}
+  { path: 'parcela', component: ParcelaComponent},
+  { path: 'criteriocalidad', component: CriterioCalidadComponent}
   
 ];
 

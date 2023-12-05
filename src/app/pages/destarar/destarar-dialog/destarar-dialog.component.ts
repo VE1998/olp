@@ -70,7 +70,7 @@ export class DestararDialogComponent implements OnInit {
     this.pesajes.id_pesaje = this.data.id_pesaje;
     this.nombreApellido =
       this.data.codigo.nombres +
-      '' +
+      ' ' +
       this.data.codigo.paterno +
       ' ' +
       this.data.codigo.materno;
@@ -89,7 +89,6 @@ export class DestararDialogComponent implements OnInit {
   listarCriterios() {
     this.criterioCalidadService.listar().subscribe((data) => {
       this.criterios = data;
-      console.log(data);
     });
   }
 

@@ -19,7 +19,7 @@ export class BancoDialogComponent implements OnInit{
     private BancoService: BancoService
    ){}
 
-  ngOnInit() {debugger
+  ngOnInit() {
 
     this.ban = new Banco();
     this.ban.id_banco = this.data.id_banco;
@@ -33,7 +33,6 @@ export class BancoDialogComponent implements OnInit{
 
   operar() {
     if (this.ban != null && this.ban.id_banco != null) {
-      debugger;
       this.BancoService
         .modificar(this.ban)
         .pipe(

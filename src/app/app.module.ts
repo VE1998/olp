@@ -11,8 +11,6 @@ import { SectorEdicionComponent } from './pages/sector/sector-edicion/SectorEdic
 import { ReactiveFormsModule, FormsModule  } from '@angular/forms';
 import { UnidadmedidaComponent } from './pages/unidadmedida/unidadmedida.component';
 import { UnidadmedidaDialogComponent } from './pages/unidadmedida/unidadmedida-dialog/unidadmedida-dialog.component';
-import { CriteriocalidadComponent } from './pages/criteriocalidad/criteriocalidad.component';
-import { CriteriocalidadDialogComponent } from './pages/criteriocalidad/criteriocalidad-dialog/criteriocalidad-dialog.component';
 import { TipoOeracionComponent } from './pages/tipo-operacion/tipo-oeracion.component';
 import { TipoOperacionDialogComponent } from './pages/tipo-operacion/tipo-operacion-dialog/tipo-operacion-dialog.component';
 import { BancoComponent } from './pages/banco/banco.component';
@@ -20,7 +18,6 @@ import { BancoDialogComponent } from './pages/banco/banco-dialog/banco-dialog.co
 import { ClasificacionContableComponent } from './pages/clasificacion-contable/clasificacion-contable.component';
 import { ClasificacionComponent } from './pages/clasificacion/clasificacion.component';
 import { ConductorComponent } from './pages/conductor/conductor.component';
-import { CriterioCalidadComponent } from './pages/criterio-calidad/criterio-calidad.component';
 import { CuentaBancariaComponent } from './pages/cuenta-bancaria/cuenta-bancaria.component';
 import { EmpresaTransporteComponent } from './pages/empresa-transporte/empresa-transporte.component';
 import { EvaluacionCalidadComponent } from './pages/evaluacion-calidad/evaluacion-calidad.component';
@@ -33,7 +30,6 @@ import { VehiculoComponent } from './pages/vehiculo/vehiculo.component';
 import { ConductorDialogComponent } from './pages/conductor/conductor-dialog/conductor-dialog.component';
 import { ClasificacionDialogComponent } from './pages/clasificacion/clasificacion-dialog/clasificacion-dialog.component';
 import { ClasificacionContableDialogComponent } from './pages/clasificacion-contable/clasificacion-contable-dialog/clasificacion-contable-dialog.component';
-import { CriterioCalidadDialogComponent } from './pages/criterio-calidad/criterio-calidad-dialog/criterio-calidad-dialog.component';
 import { CuentaBancariaDialogComponent } from './pages/cuenta-bancaria/cuenta-bancaria-dialog/cuenta-bancaria-dialog.component';
 import { EmpresaTransporteDialogComponent } from './pages/empresa-transporte/empresa-transporte-dialog/empresa-transporte-dialog.component';
 import { EvaluacionCalidadDialogComponent } from './pages/evaluacion-calidad/evaluacion-calidad-dialog/evaluacion-calidad-dialog.component';
@@ -45,6 +41,8 @@ import { ProveedorDialogComponent } from './pages/proveedor/proveedor-dialog/pro
 import { VehiculoDialogComponent } from './pages/vehiculo/vehiculo-dialog/vehiculo-dialog.component';
 import { DestararComponent } from './pages/destarar/destarar.component';
 import { DestararDialogComponent } from './pages/destarar/destarar-dialog/destarar-dialog.component';
+import { CriterioCalidadComponent } from './pages/criterio-calidad/criterio-calidad.component';
+import { CriteriocalidadDialogComponent } from './pages/criterio-calidad/criteriocalidad-dialog/criteriocalidad-dialog.component';
 
 
 
@@ -55,8 +53,6 @@ import { DestararDialogComponent } from './pages/destarar/destarar-dialog/destar
     SectorEdicionComponent,
     UnidadmedidaComponent,
     UnidadmedidaDialogComponent,
-    CriteriocalidadComponent,
-    CriteriocalidadDialogComponent,
     TipoOeracionComponent,
     TipoOperacionDialogComponent,
     BancoComponent,
@@ -64,7 +60,6 @@ import { DestararDialogComponent } from './pages/destarar/destarar-dialog/destar
     ClasificacionContableComponent,
     ClasificacionComponent,
     ConductorComponent,
-    CriterioCalidadComponent,
     CuentaBancariaComponent,
     EmpresaTransporteComponent,
     EvaluacionCalidadComponent,
@@ -77,7 +72,6 @@ import { DestararDialogComponent } from './pages/destarar/destarar-dialog/destar
     ConductorDialogComponent,
     ClasificacionDialogComponent,
     ClasificacionContableDialogComponent,
-    CriterioCalidadDialogComponent,
     CuentaBancariaDialogComponent,
     EmpresaTransporteDialogComponent,
     EvaluacionCalidadDialogComponent,
@@ -89,6 +83,8 @@ import { DestararDialogComponent } from './pages/destarar/destarar-dialog/destar
     VehiculoDialogComponent,
     DestararComponent,
     DestararDialogComponent,
+    CriterioCalidadComponent,
+    CriteriocalidadDialogComponent,
 
   ],
   imports: [

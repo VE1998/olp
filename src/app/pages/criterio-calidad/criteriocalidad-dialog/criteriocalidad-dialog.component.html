@@ -1,0 +1,78 @@
+<div mat-dialog-title>
+    <h1>Criterio Calidad</h1>
+</div>
+
+<div mat-dialog-content class="content">
+    <div class="row">
+        <mat-form-field appearance="outline">
+            <mat-label>Descripcion</mat-label>
+            <input matInput type="text" placeholder="Descripcion" [(ngModel)]="criterios.descripcion">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Unidad Medida</mat-label>
+            <mat-select [(value)]="idUnidadMedidaSeleccionado">
+                <mat-option *ngFor="let u of unidadMedida" [value]="u.codigo_um">
+                    {{ u.descripcion }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+
+    <div class="row">
+        <mat-form-field>
+            <mat-label>Castigo</mat-label>
+            <mat-select [(value)]="castigoSeleccionado">
+                <mat-option *ngFor="let cas of castigo" [value]="cas.value">
+                    {{ cas.value}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Forma Castigo</mat-label>
+            <mat-select [(value)]="formaCastigoSeleccionado">
+                <mat-option *ngFor="let f of formaCastigo" [value]="f.value">
+                    {{ f.value}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+
+    <div class="row">
+        <mat-form-field appearance="outline">
+            <mat-label>Factor</mat-label>
+            <input matInput type="text" placeholder="Descripcion" [(ngModel)]="criterios.factor_castigo">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Factor Variable</mat-label>
+            <mat-select [(value)]="factorVariableSeleccionado">
+                <mat-option *ngFor="let f of factorVariable" [value]="f.value">
+                    {{ f.value}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+
+    <div class="row">
+        <mat-form-field>
+            <mat-label>Impresion Tiket</mat-label>
+            <mat-select [(value)]="impresionSeleccionado">
+                <mat-option *ngFor="let i of imprimir" [value]="i.value">
+                    {{ i.value}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Estado</mat-label>
+            <mat-select [(value)]="estadoSeleccionado">
+                <mat-option *ngFor="let e of estado" [value]="e.value">
+                    {{ e.value}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+</div>
+
+<div mat-dialog-actions class="action">
+    <button mat-raised-button type="button">Guardar</button>
+    <button mat-raised-button type="button" [mat-dialog-close]="false">Cancel</button>
+</div>
