@@ -38,6 +38,18 @@ export class CriterioCalidadComponent implements OnInit{
 
   ngOnInit() {
 
+    this.criterioCalidadService.criterioCalidadCambio.subscribe((data) => {
+      this.dataSource = new MatTableDataSource(data);
+      this.dataSource.sort = this.sort;
+      this.dataSource.paginator = this.paginator;
+    });
+
+    this.criterioCalidadService.mensajeCambio.subscribe((data) => {
+      this.snackBar.open(data, 'AVISO', {
+        duration: 2000,
+      });
+    });
+
     this.criterioCalidadService.listar().subscribe((data) => {
       this.dataSource = new MatTableDataSource(data);
       this.dataSource.sort = this.sort;
