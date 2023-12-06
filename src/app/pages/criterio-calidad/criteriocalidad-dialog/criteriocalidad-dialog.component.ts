@@ -60,14 +60,11 @@ export class CriteriocalidadDialogComponent implements OnInit{
     {value: 'INACTIVO'}
   ];
 
-
-  selectedValue!: UnidadMedida;
-
   criterios!: CriterioCalidad;
 
   unidadMedida: UnidadMedida[] = [];
 
-  idUnidadMedidaSeleccionado!: string;
+  UnidadMedidaSeleccionado!: UnidadMedida;
 
   castigoSeleccionado!: string;
 
@@ -88,13 +85,22 @@ export class CriteriocalidadDialogComponent implements OnInit{
 
   ngOnInit() {
 
+
     this.criterios = new CriterioCalidad();
     this.criterios.id_criterio = this.data.id_criterio;
-    (this.criterios.descripcion = this.data.descripcion);
-    (this.criterios.factor_castigo = this.data.factor_castigo);
+    this.criterios.descripcion = this.data.descripcion;
+    this.UnidadMedidaSeleccionado.codigo_um = this.data.codigo_um.codigo_um;
+    this.castigoSeleccionado = this.data.castigo;
+    this.formaCastigoSeleccionado = this.data.forma_castigo;
+    this.criterios.factor_castigo = this.data.factor_castigo;
+    this.factorVariableSeleccionado = this.data.factor_variable;
+    this.impresionSeleccionado = this.data.impresion_tiket;
+    this.estadoSeleccionado = this.data.estado;
+
 
     this.listarUnidadMedida();
-    
+
+
   }
 
   listarUnidadMedida() {
@@ -104,6 +110,30 @@ export class CriteriocalidadDialogComponent implements OnInit{
   }
 
   cancelar() {
+    this.dialogRef.closeAll();
+  }
+
+  operar() {debugger
+    if (this.criterios != null && this.criterios.id_criterio != null) {
+      this.CriterioCalidadService
+        .modificar(this.criterios)
+        .pipe(
+          switchMap(() => {
+            return this.CriterioCalidadService.listar();
+          })
+        )
+        .subscribe((criterio) => {
+          this.CriterioCalidadService.criterioCalidadCambio.next(criterio);
+          this.CriterioCalidadService.mensajeCambio.next('MODIFICACION CORRECTA');
+        });
+    } else {
+      this.CriterioCalidadService.registrar(this.criterios).subscribe(() => {
+        this.CriterioCalidadService.listar().subscribe((cri) => {
+          this.CriterioCalidadService.criterioCalidadCambio.next(cri);
+          this.CriterioCalidadService.mensajeCambio.next('Registro Correcto');
+        });
+      });
+    }
     this.dialogRef.closeAll();
   }
 

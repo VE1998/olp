@@ -10,9 +10,9 @@
         </mat-form-field>
         <mat-form-field>
             <mat-label>Unidad Medida</mat-label>
-            <mat-select [(value)]="idUnidadMedidaSeleccionado">
+            <mat-select [(value)]="UnidadMedidaSeleccionado">
                 <mat-option *ngFor="let u of unidadMedida" [value]="u.codigo_um">
-                    {{ u.descripcion }}
+                    {{ u.codigo_um }}
                 </mat-option>
             </mat-select>
         </mat-form-field>
@@ -21,7 +21,7 @@
     <div class="row">
         <mat-form-field>
             <mat-label>Castigo</mat-label>
-            <mat-select [(value)]="castigoSeleccionado">
+            <mat-select [(ngModel)]="castigoSeleccionado" [(value)]="castigoSeleccionado">
                 <mat-option *ngFor="let cas of castigo" [value]="cas.value">
                     {{ cas.value}}
                 </mat-option>
@@ -73,6 +73,6 @@
 </div>
 
 <div mat-dialog-actions class="action">
-    <button mat-raised-button type="button">Guardar</button>
+    <button mat-raised-button type="button" (click)="operar()">Guardar</button>
     <button mat-raised-button type="button" [mat-dialog-close]="false">Cancel</button>
 </div>

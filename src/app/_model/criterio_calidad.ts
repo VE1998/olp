@@ -4,7 +4,7 @@ export class CriterioCalidad{
 
   id_criterio!: number;
   descripcion!: string;
-  unidad_medida!: UnidadMedida;
+  codigo_um!: UnidadMedida;
   castigo!: string;
   forma_castigo!: string;
   factor_castigo!: number;

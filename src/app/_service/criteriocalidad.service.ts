@@ -32,6 +32,6 @@ export class CriteriocalidadService {
   }
 
   modificar(criterio: CriterioCalidad){
-    return this.http.post(this.url, criterio);
+    return this.http.put(this.url, criterio);
    }
 }

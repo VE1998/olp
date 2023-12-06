@@ -32,9 +32,7 @@ export class CriterioCalidadComponent implements OnInit{
   constructor(private criterioCalidadService: CriteriocalidadService,
     private snackBar: MatSnackBar,
     private dialog: MatDialog)
-    {
-
-    }
+    {}
 
 
 
@@ -44,9 +42,8 @@ export class CriterioCalidadComponent implements OnInit{
       this.dataSource = new MatTableDataSource(data);
       this.dataSource.sort = this.sort;
       this.dataSource.paginator = this.paginator;
-      console.log(data);
     });
-    
+
   }
 
   openDialog(criteriocalidad?: CriterioCalidad) {
