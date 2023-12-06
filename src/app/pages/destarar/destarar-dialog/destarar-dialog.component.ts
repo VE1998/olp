@@ -33,13 +33,6 @@ export class DestararDialogComponent implements OnInit {
   dataSource!: MatTableDataSource<EvaluacionCalidad>;
   displeyedColumns = [
     'criterio',
-    'valor',
-    'unidad_medida',
-    'castigo',
-    'forma_castigo',
-    'factor_castigo',
-    'total_castigo',
-    'acciones',
   ];
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -101,28 +94,9 @@ export class DestararDialogComponent implements OnInit {
   }
 
   registrar() {debugger
-    let pesaje = new Pesaje();
-    pesaje.id_pesaje = this.data.id_pesaje;
-
-    let criterio = new CriterioCalidad();
-    criterio.id_criterio = this.idCriterioSeleccionado;
-
-
-    let evauacion_rff = new EvaluacionCalidad();
-    evauacion_rff.pesaje = pesaje;
-    evauacion_rff.criterio_calidad = criterio;
-
-    this.evaluacionCalidadService.registrar(evauacion_rff).subscribe( () => {
-      this.snackBar.open("se registro", "aviso", { duration: 2000});
-
-      setTimeout( () => {
-        this.limpiar();
-      }, 2000);
-    });
-
-  }
-
-  limpiar(){
     
+
   }
+
+
 }
