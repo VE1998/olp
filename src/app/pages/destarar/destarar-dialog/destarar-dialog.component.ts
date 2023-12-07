@@ -33,6 +33,10 @@ export class DestararDialogComponent implements OnInit {
   dataSource!: MatTableDataSource<EvaluacionCalidad>;
   displeyedColumns = [
     'criterio',
+    'valor',
+    'unidadMedida',
+    'castigo',
+    'acciones',
   ];
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -55,28 +59,21 @@ export class DestararDialogComponent implements OnInit {
     private snackBar: MatSnackBar
   ) {}
 
-  ngOnInit() {
+  ngOnInit() {debugger
     this.listarCriterios();
 
     this.pesajes = new Pesaje();
     this.pesajes.num_ticket = this.data.num_ticket;
     this.pesajes.id_pesaje = this.data.id_pesaje;
-    this.nombreApellido =
-      this.data.codigo.nombres +
-      ' ' +
-      this.data.codigo.paterno +
-      ' ' +
-      this.data.codigo.materno;
-
+    this.nombreApellido = this.data.codigo.nombres +' ' +this.data.codigo.paterno +' ' +this.data.codigo.materno;
     this.victor = this.data.id_pesaje;
 
-    this.evaluacionCalidadService
-      .listarPorIdPesaje(this.victor)
-      .subscribe((data) => {
-        this.dataSource = new MatTableDataSource();
-        this.dataSource.sort = this.sort;
-        this.dataSource.paginator = this.paginator;
-      });
+    this.evaluacionCalidadService.listarPorIdPesaje(this.victor).subscribe ( (data) =>{
+      this.dataSource = new MatTableDataSource(data);
+      this.dataSource.sort = this.sort;
+      this.dataSource.paginator = this.paginator;
+    });
+    
   }
 
   listarCriterios() {
@@ -93,9 +90,8 @@ export class DestararDialogComponent implements OnInit {
     this.idCriterioSeleccionado = event.target.value;
   }
 
-  registrar() {debugger
-    
-
+  registrar() {
+  
   }
 
 
