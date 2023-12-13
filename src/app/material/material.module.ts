@@ -20,6 +20,7 @@ import {MatGridListModule} from '@angular/material/grid-list';
 import { ReactiveFormsModule } from '@angular/forms';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatListModule} from '@angular/material/list';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 
 
@@ -46,7 +47,8 @@ import {MatListModule} from '@angular/material/list';
     MatGridListModule,
     ReactiveFormsModule,
     MatTabsModule,
-    MatListModule
+    MatListModule,
+    MatCheckboxModule
   ], exports: [
     MatTableModule,
     MatButtonModule,
@@ -66,7 +68,8 @@ import {MatListModule} from '@angular/material/list';
     MatDialogModule,MatGridListModule,
     ReactiveFormsModule,
     MatTabsModule,
-    MatListModule
+    MatListModule,
+    MatCheckboxModule
   ]
 })
 export class MaterialModule { }

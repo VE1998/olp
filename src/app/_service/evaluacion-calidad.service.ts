@@ -21,11 +21,11 @@ export class EvaluacionCalidadService {
   }
 
   listaPorId(id_evaluacion: number) {
-    return this.http.get<EvaluacionCalidad>(`${this.url}/${id_evaluacion}`);
+    return this.http.get<EvaluacionCalidad[]>(`${this.url}/${id_evaluacion}`);
   }
 
   listarPorIdPesaje(id_pesaje: number) {
-    return this.http.get<EvaluacionCalidad>(`${this.url}/destarar/${id_pesaje}`);
+    return this.http.get<EvaluacionCalidad[]>(`${this.url}/destarar/${id_pesaje}`);
   }
 
   registrar(evaluacionCalidad: EvaluacionCalidad) {

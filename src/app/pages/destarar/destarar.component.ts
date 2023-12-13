@@ -64,9 +64,7 @@ export class DestararComponent implements OnInit{
     this.PesajeService.destarar().subscribe((data) => {
       this.dataSource = new MatTableDataSource(data);
       this.dataSource.sort = this.sort;
-      this.dataSource.paginator = this.paginator;
-      console.log(data);
-      
+      this.dataSource.paginator = this.paginator; 
     });
 
   }

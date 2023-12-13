@@ -1,5 +1,7 @@
 import { Component, Inject, OnInit, ViewChild } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormGroup, FormsModule } from '@angular/forms';
+import { MatCardModule } from '@angular/material/card';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -36,6 +38,9 @@ export class DestararDialogComponent implements OnInit {
     'valor',
     'unidadMedida',
     'castigo',
+    'formacastigo',
+    'factorcastigo',
+    'totalcastigo',
     'acciones',
   ];
 
@@ -50,6 +55,9 @@ export class DestararDialogComponent implements OnInit {
 
   eva!: EvaluacionCalidad;
 
+  checked = false;
+  indeterminate = false;
+
   constructor(
     private criterioCalidadService: CriteriocalidadService,
     private evaluacionCalidadService: EvaluacionCalidadService,
@@ -59,7 +67,7 @@ export class DestararDialogComponent implements OnInit {
     private snackBar: MatSnackBar
   ) {}
 
-  ngOnInit() {debugger
+  ngOnInit(): void {debugger
     this.listarCriterios();
 
     this.pesajes = new Pesaje();
@@ -72,6 +80,8 @@ export class DestararDialogComponent implements OnInit {
       this.dataSource = new MatTableDataSource(data);
       this.dataSource.sort = this.sort;
       this.dataSource.paginator = this.paginator;
+      console.log(data);
+      
     });
     
   }
