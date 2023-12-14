@@ -6,6 +6,10 @@
   <div class="row">
     <mat-form-field appearance="outline">
       <mat-label>Num Tiket</mat-label>
+      <input matInput [(ngModel)]="pesajes.id_pesaje" disabled="" type="text" placeholder="00252387">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Num Tiket</mat-label>
       <input matInput [(ngModel)]="pesajes.num_ticket" type="text" placeholder="00252387">
     </mat-form-field>
     <mat-form-field appearance="outline">
@@ -55,7 +59,7 @@
 
         <mat-form-field appearance="outline">
           <mat-label>Valor</mat-label>
-          <input matInput placeholder="Ex. Babaji">
+          <input matInput placeholder="Ex. Babaji" [value]="valor">
         </mat-form-field>
       </div>
 

@@ -61,6 +61,7 @@ export class DestararDialogComponent implements OnInit {
   forma_castigo!: string;
   castigo!: string;
   factor_castigo!: number;
+  valor!: number;
 
 
   constructor(
@@ -103,7 +104,12 @@ export class DestararDialogComponent implements OnInit {
   }
 
  
-  registrar() {
+  registrar() {debugger
+
+    let criteriocalidad = new EvaluacionCalidad();
+    criteriocalidad.pesaje.id_pesaje = this.pesajes.id_pesaje;
+    criteriocalidad.criterio_calidad.id_criterio = this.selectedValue;
+    criteriocalidad.valor = this.valor;
   
   }
 
