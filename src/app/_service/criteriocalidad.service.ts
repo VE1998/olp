@@ -24,7 +24,7 @@ export class CriteriocalidadService {
   }
 
   listaPorId(id_criterio: number){
-   return this.http.get<CriterioCalidad>(`${this.url}/${id_criterio}`);
+   return this.http.get<CriterioCalidad[]>(`${this.url}/${id_criterio}`);
   }
 
   registrar(criterio: CriterioCalidad){

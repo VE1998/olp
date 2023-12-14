@@ -15,18 +15,13 @@ import { CriteriocalidadService } from 'src/app/_service/criteriocalidad.service
 import { EvaluacionCalidadService } from 'src/app/_service/evaluacion-calidad.service';
 import { PesajeService } from 'src/app/_service/pesaje.service';
 
-interface Food {
-  value: string;
-  viewValue: string;
-}
-
 @Component({
   selector: 'app-destarar-dialog',
   templateUrl: './destarar-dialog.component.html',
   styleUrls: ['./destarar-dialog.component.css'],
 })
 export class DestararDialogComponent implements OnInit {
-  selectedValue!: CriterioCalidad;
+  selectedValue!: number;
 
   criterios: CriterioCalidad[] = [];
 
@@ -58,6 +53,16 @@ export class DestararDialogComponent implements OnInit {
   checked = false;
   indeterminate = false;
 
+  crite!: CriterioCalidad;
+
+  prueva : CriterioCalidad[] = [];
+
+  um!: string | undefined;
+  forma_castigo!: string;
+  castigo!: string;
+  factor_castigo!: number;
+
+
   constructor(
     private criterioCalidadService: CriteriocalidadService,
     private evaluacionCalidadService: EvaluacionCalidadService,
@@ -67,7 +72,7 @@ export class DestararDialogComponent implements OnInit {
     private snackBar: MatSnackBar
   ) {}
 
-  ngOnInit(): void {debugger
+  ngOnInit(): void {
     this.listarCriterios();
 
     this.pesajes = new Pesaje();
@@ -79,9 +84,7 @@ export class DestararDialogComponent implements OnInit {
     this.evaluacionCalidadService.listarPorIdPesaje(this.victor).subscribe ( (data) =>{
       this.dataSource = new MatTableDataSource(data);
       this.dataSource.sort = this.sort;
-      this.dataSource.paginator = this.paginator;
-      console.log(data);
-      
+      this.dataSource.paginator = this.paginator;     
     });
     
   }
@@ -92,16 +95,20 @@ export class DestararDialogComponent implements OnInit {
     });
   }
 
-  cancelar() {
-    this.dialogRef.closeAll();
-  }
-
-  cambiar(event: any) {
-    this.idCriterioSeleccionado = event.target.value;
-  }
-
+ 
   registrar() {
   
+  }
+
+  onFoodSelection2() {debugger
+    const opcion = this.criterios.find(opc => opc.id_criterio === this.selectedValue);
+    if (opcion) {
+      this.um = opcion.codigo_um.codigo_um;
+      this.forma_castigo = opcion.forma_castigo;
+      this.castigo = opcion.castigo;
+      this.factor_castigo = opcion.factor_castigo;    
+    }    
+    
   }
 
 
