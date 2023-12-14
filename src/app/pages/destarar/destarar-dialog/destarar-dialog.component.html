@@ -24,6 +24,7 @@
       <div class="row">
         <mat-form-field>
           <mat-select placeholder="Criterios Calidad" [(ngModel)]="selectedValue" (ngModelChange)="onFoodSelection2()">
+            <mat-option value=""></mat-option>
             <mat-option *ngFor="let c of criterios" [value]="c.id_criterio">
               {{ c.descripcion }}
             </mat-option>

@@ -86,6 +86,13 @@ export class DestararDialogComponent implements OnInit {
       this.dataSource.sort = this.sort;
       this.dataSource.paginator = this.paginator;     
     });
+
+    if(this.selectedValue == undefined){
+       this.um = "";
+       this.forma_castigo="";
+       this.castigo = "";
+       this.factor_castigo = 0;
+    }
     
   }
 
