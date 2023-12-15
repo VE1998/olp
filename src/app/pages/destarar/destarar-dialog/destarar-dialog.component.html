@@ -6,10 +6,6 @@
   <div class="row">
     <mat-form-field appearance="outline">
       <mat-label>Num Tiket</mat-label>
-      <input matInput [(ngModel)]="pesajes.id_pesaje" disabled="" type="text" placeholder="00252387">
-    </mat-form-field>
-    <mat-form-field appearance="outline">
-      <mat-label>Num Tiket</mat-label>
       <input matInput [(ngModel)]="pesajes.num_ticket" type="text" placeholder="00252387">
     </mat-form-field>
     <mat-form-field appearance="outline">
@@ -129,6 +125,9 @@
               <div class="example-button-container">
                 <button mat-mini-fab color="primary" aria-label="Example icon button with a menu icon">
                   <mat-icon>edit</mat-icon>
+                </button>
+                <button mat-mini-fab color="warn" aria-label="Example icon button with a menu icon">
+                  <mat-icon>delete</mat-icon>
                 </button>
               </div>
             </td>

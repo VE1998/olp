@@ -11,6 +11,7 @@ import { switchMap } from 'rxjs';
 import { CriterioCalidad } from 'src/app/_model/criterio_calidad';
 import { EvaluacionCalidad } from 'src/app/_model/evaluacion_calidad';
 import { Pesaje } from 'src/app/_model/pesaje';
+import { UnidadMedida } from 'src/app/_model/unidadmedida';
 import { CriteriocalidadService } from 'src/app/_service/criteriocalidad.service';
 import { EvaluacionCalidadService } from 'src/app/_service/evaluacion-calidad.service';
 import { PesajeService } from 'src/app/_service/pesaje.service';
@@ -82,19 +83,33 @@ export class DestararDialogComponent implements OnInit {
     this.nombreApellido = this.data.codigo.nombres +' ' +this.data.codigo.paterno +' ' +this.data.codigo.materno;
     this.victor = this.data.id_pesaje;
 
-    this.evaluacionCalidadService.listarPorIdPesaje(this.victor).subscribe ( (data) =>{
-      this.dataSource = new MatTableDataSource(data);
-      this.dataSource.sort = this.sort;
-      this.dataSource.paginator = this.paginator;     
-    });
-
     if(this.selectedValue == undefined){
        this.um = "";
        this.forma_castigo="";
        this.castigo = "";
        this.factor_castigo = 0;
     }
-    
+
+    this.evaluacionCalidadService.evaluacionCalidadCambio.subscribe( (data) => {
+      this.dataSource = new MatTableDataSource(data);
+      this.dataSource.sort = this.sort;
+      this.dataSource.paginator = this.paginator;
+    })
+
+    this.evaluacionCalidadService.mensajeCambio.subscribe( (data) => {
+      this.snackBar.open(data, 'AVISO',{
+        duration: 2000,
+      });
+    });
+
+    this.evaluacionCalidadService.listarPorIdPesaje(this.victor).subscribe ( (data) =>{
+      this.dataSource = new MatTableDataSource(data);
+      this.dataSource.sort = this.sort;
+      this.dataSource.paginator = this.paginator;
+    });
+
+
+
   }
 
   listarCriterios() {
@@ -103,25 +118,44 @@ export class DestararDialogComponent implements OnInit {
     });
   }
 
- 
-  registrar() {debugger
 
-    let criteriocalidad = new EvaluacionCalidad();
-    criteriocalidad.pesaje.id_pesaje = this.pesajes.id_pesaje;
-    criteriocalidad.criterio_calidad.id_criterio = this.selectedValue;
-    criteriocalidad.valor = this.valor;
-  
+  registrar() {
+
+    let pesa = new Pesaje();
+    pesa.id_pesaje = this.pesajes.id_pesaje
+
+    let crit = new CriterioCalidad();
+    crit.id_criterio = this.selectedValue;
+
+
+
+    let evaluacion = new EvaluacionCalidad();
+    evaluacion.id_pesaje = pesa;
+    evaluacion.id_criterio = crit;
+    evaluacion.valor = 30;
+    evaluacion.codigo_um = "UND"
+    evaluacion.castigo = this.castigo;
+    evaluacion.forma_castigo = this.forma_castigo;
+    evaluacion.factor_castigo = this.factor_castigo;
+    evaluacion.usuario = "VICTOREUSEBIO";
+
+    this.evaluacionCalidadService.registrar(evaluacion).subscribe( () => {
+      this.evaluacionCalidadService.listarPorIdPesaje(this.pesajes.id_pesaje).subscribe( (eva) => {
+        this.evaluacionCalidadService.evaluacionCalidadCambio.next(eva);
+        this.evaluacionCalidadService.mensajeCambio.next("Registro Correcto");
+      });
+    })
   }
 
-  onFoodSelection2() {debugger
+  onFoodSelection2() {
     const opcion = this.criterios.find(opc => opc.id_criterio === this.selectedValue);
     if (opcion) {
       this.um = opcion.codigo_um.codigo_um;
       this.forma_castigo = opcion.forma_castigo;
       this.castigo = opcion.castigo;
-      this.factor_castigo = opcion.factor_castigo;    
-    }    
-    
+      this.factor_castigo = opcion.factor_castigo;
+    }
+
   }
 
 
