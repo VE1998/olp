@@ -37,7 +37,8 @@ export class DestararDialogComponent implements OnInit {
     'formacastigo',
     'factorcastigo',
     'totalcastigo',
-    'acciones',
+    'actualizar',
+    'eliminar',
   ];
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
