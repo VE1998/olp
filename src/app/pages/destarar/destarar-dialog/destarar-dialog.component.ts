@@ -58,11 +58,12 @@ export class DestararDialogComponent implements OnInit {
 
   prueva : CriterioCalidad[] = [];
 
-  um!: string | undefined;
+  um: string | undefined;
   forma_castigo!: string;
   castigo!: string;
   factor_castigo!: number;
   valor!: number;
+  totalDescuento!: number;
 
 
   constructor(
@@ -83,6 +84,8 @@ export class DestararDialogComponent implements OnInit {
     this.nombreApellido = this.data.codigo.nombres +' ' +this.data.codigo.paterno +' ' +this.data.codigo.materno;
     this.victor = this.data.id_pesaje;
 
+
+
     if(this.selectedValue == undefined){
        this.um = "";
        this.forma_castigo="";
@@ -98,7 +101,7 @@ export class DestararDialogComponent implements OnInit {
 
     this.evaluacionCalidadService.mensajeCambio.subscribe( (data) => {
       this.snackBar.open(data, 'AVISO',{
-        duration: 2000,
+        duration: 3000,
       });
     });
 
@@ -132,12 +135,12 @@ export class DestararDialogComponent implements OnInit {
     let evaluacion = new EvaluacionCalidad();
     evaluacion.id_pesaje = pesa;
     evaluacion.id_criterio = crit;
-    evaluacion.valor = 30;
-    evaluacion.codigo_um = "UND"
+    evaluacion.valor = this.valor;
+    evaluacion.codigo_um = ""+this.um;
     evaluacion.castigo = this.castigo;
     evaluacion.forma_castigo = this.forma_castigo;
     evaluacion.factor_castigo = this.factor_castigo;
-    evaluacion.usuario = "VICTOREUSEBIO";
+    evaluacion.usuario = "VEUSEBIO";
 
     this.evaluacionCalidadService.registrar(evaluacion).subscribe( () => {
       this.evaluacionCalidadService.listarPorIdPesaje(this.pesajes.id_pesaje).subscribe( (eva) => {
@@ -145,6 +148,8 @@ export class DestararDialogComponent implements OnInit {
         this.evaluacionCalidadService.mensajeCambio.next("Registro Correcto");
       });
     })
+
+    this.limpiar();
   }
 
   onFoodSelection2() {
@@ -154,8 +159,18 @@ export class DestararDialogComponent implements OnInit {
       this.forma_castigo = opcion.forma_castigo;
       this.castigo = opcion.castigo;
       this.factor_castigo = opcion.factor_castigo;
+      
     }
 
+  }
+
+  limpiar(){
+    this.selectedValue = 0;
+    this.um = "";
+    this.forma_castigo = "";
+    this.castigo = "";
+    this.factor_castigo = 0;
+    this.valor = 0;
   }
 
 

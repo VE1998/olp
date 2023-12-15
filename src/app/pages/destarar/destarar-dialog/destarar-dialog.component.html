@@ -32,12 +32,12 @@
         </mat-form-field>
         <mat-form-field appearance="outline">
           <mat-label>Unidad Medida</mat-label>
-          <input disabled="" matInput placeholder="Ex. Babaji" [value]="um">
+          <input disabled="" matInput placeholder="UND" [value]="um">
         </mat-form-field>
 
         <mat-form-field appearance="outline">
           <mat-label>Forma Castigo</mat-label>
-          <input disabled="" matInput placeholder="Ex. Babaji" [value]="forma_castigo">
+          <input disabled="" matInput placeholder="DescuentoPlanilla" [value]="forma_castigo">
         </mat-form-field>
       </div>
 
@@ -45,17 +45,17 @@
 
         <mat-form-field appearance="outline">
           <mat-label>Castigo</mat-label>
-          <input disabled="" matInput placeholder="Ex. Babaji" [value]="castigo">
+          <input disabled="" matInput placeholder="SI || NO" [value]="castigo">
         </mat-form-field>
 
         <mat-form-field appearance="outline">
           <mat-label>Factor Castigo</mat-label>
-          <input disabled="" matInput placeholder="Ex. Babaji" [value]="factor_castigo">
+          <input disabled="" matInput placeholder="0.040" [value]="factor_castigo">
         </mat-form-field>
 
         <mat-form-field appearance="outline">
           <mat-label>Valor</mat-label>
-          <input matInput placeholder="Ex. Babaji" [value]="valor">
+          <input matInput placeholder="30" [(ngModel)]="valor">
         </mat-form-field>
       </div>
 
@@ -68,7 +68,8 @@
 
     </mat-card-content>
     <mat-card-actions>
-      <button mat-raised-button (click)="registrar()" color="primary" mat-button>REGISTRAR</button>
+      <button mat-raised-button (click)="registrar()" color="primary" mat-button>Registrar</button>
+      <button mat-raised-button (click)="limpiar()" color="warn" mat-button>Cancelar</button>
     </mat-card-actions>
   </mat-card>
 
@@ -104,19 +105,19 @@
           <!-- Name Column -->
           <ng-container matColumnDef="formacastigo">
             <th mat-header-cell *matHeaderCellDef mat-sort-header>Forma Castigo</th>
-            <td mat-cell *matCellDef="let row">{{ row.codigo_um }}</td>
+            <td mat-cell *matCellDef="let row">{{ row.forma_castigo }}</td>
           </ng-container>
 
           <!-- Name Column -->
           <ng-container matColumnDef="factorcastigo">
             <th mat-header-cell *matHeaderCellDef mat-sort-header>Factor Castigo</th>
-            <td mat-cell *matCellDef="let row"> {{ row.castigo}}</td>
+            <td mat-cell *matCellDef="let row"> {{ row.factor_castigo}}</td>
           </ng-container>
 
           <!-- Name Column -->
           <ng-container matColumnDef="totalcastigo">
             <th mat-header-cell *matHeaderCellDef mat-sort-header>Total Castigo</th>
-            <td mat-cell *matCellDef="let row"> {{ row.castigo}}</td>
+            <td mat-cell *matCellDef="let row"> {{ row.valor*row.factor_castigo }}</td>
           </ng-container>
 
           <ng-container matColumnDef="acciones">
