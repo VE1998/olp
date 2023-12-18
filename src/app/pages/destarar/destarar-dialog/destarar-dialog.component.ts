@@ -23,11 +23,8 @@ import { PesajeService } from 'src/app/_service/pesaje.service';
 })
 export class DestararDialogComponent implements OnInit {
   selectedValue!: number;
-
   criterios: CriterioCalidad[] = [];
-
   idCriterioSeleccionado!: number;
-
   dataSource!: MatTableDataSource<EvaluacionCalidad>;
   displeyedColumns = [
     'criterio',
@@ -40,31 +37,24 @@ export class DestararDialogComponent implements OnInit {
     'actualizar',
     'eliminar',
   ];
-
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort!: MatSort;
-
   pesajes!: Pesaje;
-
   victor!: number;
-
   nombreApellido!: string;
-
   eva!: EvaluacionCalidad;
-
   checked = false;
   indeterminate = false;
-
   crite!: CriterioCalidad;
-
   prueva : CriterioCalidad[] = [];
-
   um: string | undefined;
-  forma_castigo!: string;
+  forma_castigo!: number;
   castigo!: string;
   factor_castigo!: number;
   valor!: number;
   totalDescuento!: number;
+
+  id_to: number | undefined;
 
 
   constructor(
@@ -80,39 +70,33 @@ export class DestararDialogComponent implements OnInit {
     this.listarCriterios();
 
     this.pesajes = new Pesaje();
-    this.pesajes.num_ticket = this.data.num_ticket;
     this.pesajes.id_pesaje = this.data.id_pesaje;
+    this.pesajes.num_ticket = this.data.num_ticket;
+    
     this.nombreApellido = this.data.codigo.nombres +' ' +this.data.codigo.paterno +' ' +this.data.codigo.materno;
     this.victor = this.data.id_pesaje;
 
-
-
     if(this.selectedValue == undefined){
        this.um = "";
-       this.forma_castigo="";
+       this.forma_castigo=0;
        this.castigo = "";
        this.factor_castigo = 0;
     }
-
     this.evaluacionCalidadService.evaluacionCalidadCambio.subscribe( (data) => {
       this.dataSource = new MatTableDataSource(data);
       this.dataSource.sort = this.sort;
       this.dataSource.paginator = this.paginator;
     })
-
     this.evaluacionCalidadService.mensajeCambio.subscribe( (data) => {
       this.snackBar.open(data, 'AVISO',{
         duration: 3000,
       });
     });
-
     this.evaluacionCalidadService.listarPorIdPesaje(this.victor).subscribe ( (data) =>{
       this.dataSource = new MatTableDataSource(data);
       this.dataSource.sort = this.sort;
       this.dataSource.paginator = this.paginator;
     });
-
-
 
   }
 
@@ -123,10 +107,19 @@ export class DestararDialogComponent implements OnInit {
   }
 
 
-  registrar() {
+  registrar() {debugger
 
     let pesa = new Pesaje();
-    pesa.id_pesaje = this.pesajes.id_pesaje
+    pesa.id_pesaje = this.pesajes.id_pesaje;
+    pesa.num_ticket = this.data.num_ticket;
+    pesa.tipo_operacion = this.data.tipo_operacion;
+    pesa.id_to.id_to =this.data.id_to.id_to;
+    pesa.codigo.codigo = this.data.codigo.codigo;
+    pesa.fecha = this.data.fecha;
+    pesa.peso_ingreso = this.data.peso_ingreso;
+    pesa.peso_salida = this.data.peso_salida;
+    pesa.peso_neto = this.data.peso_neto;
+    pesa.castigo_importe = this.valor*this.forma_castigo;
 
     let crit = new CriterioCalidad();
     crit.id_criterio = this.selectedValue;
@@ -139,7 +132,7 @@ export class DestararDialogComponent implements OnInit {
     evaluacion.valor = this.valor;
     evaluacion.codigo_um = ""+this.um;
     evaluacion.castigo = this.castigo;
-    evaluacion.forma_castigo = this.forma_castigo;
+    evaluacion.forma_castigo =""+ this.forma_castigo;
     evaluacion.factor_castigo = this.factor_castigo;
     evaluacion.usuario = "VEUSEBIO";
 
@@ -168,7 +161,7 @@ export class DestararDialogComponent implements OnInit {
   limpiar(){
     this.selectedValue = 0;
     this.um = "";
-    this.forma_castigo = "";
+    this.forma_castigo = 0;
     this.castigo = "";
     this.factor_castigo = 0;
     this.valor = 0;

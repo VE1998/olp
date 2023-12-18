@@ -11,7 +11,7 @@ export class Pesaje{
   id_pesaje!: number;
   num_ticket!: string;
   tipo_operacion!: string;
-  tipoOperacon!: TipoOperacion;
+  id_to!: TipoOperacion;
   codigo!: Persona;
   fecha!: string;
   peso_ingreso!: number;

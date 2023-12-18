@@ -69,7 +69,7 @@ export class CriteriocalidadDialogComponent implements OnInit{
 
   castigoSeleccionado!: string;
 
-  formaCastigoSeleccionado!: string;
+  formaCastigoSeleccionado!: number;
 
   factorVariableSeleccionado!: string;
 
