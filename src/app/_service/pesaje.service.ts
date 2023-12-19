@@ -32,7 +32,7 @@ export class PesajeService {
     return this.http.post(this.url, pesaje);
   }
 
-  modificar(pesaje: Pesaje) {
+  modificar(pesaje: Pesaje) {debugger
     return this.http.put(this.url, pesaje);
   }
 

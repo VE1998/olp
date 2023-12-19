@@ -72,7 +72,7 @@ export class DestararDialogComponent implements OnInit {
     this.pesajes = new Pesaje();
     this.pesajes.id_pesaje = this.data.id_pesaje;
     this.pesajes.num_ticket = this.data.num_ticket;
-    
+
     this.nombreApellido = this.data.codigo.nombres +' ' +this.data.codigo.paterno +' ' +this.data.codigo.materno;
     this.victor = this.data.id_pesaje;
 
@@ -107,19 +107,42 @@ export class DestararDialogComponent implements OnInit {
   }
 
 
-  registrar() {debugger
+  registrar() {
 
     let pesa = new Pesaje();
     pesa.id_pesaje = this.pesajes.id_pesaje;
     pesa.num_ticket = this.data.num_ticket;
     pesa.tipo_operacion = this.data.tipo_operacion;
-    pesa.id_to.id_to =this.data.id_to.id_to;
-    pesa.codigo.codigo = this.data.codigo.codigo;
+    pesa.id_to = this.data.id_to;
+    pesa.codigo = this.data.codigo;
     pesa.fecha = this.data.fecha;
     pesa.peso_ingreso = this.data.peso_ingreso;
     pesa.peso_salida = this.data.peso_salida;
     pesa.peso_neto = this.data.peso_neto;
-    pesa.castigo_importe = this.valor*this.forma_castigo;
+    pesa.castigo_importe = this.valor*this.factor_castigo;
+    pesa.castigo_peso = this.data.castigo_peso;
+    pesa.castigo_planilla = this.data.castigo_planilla;
+    pesa.id_vehiculo = this.data.id_vehiculo;
+    pesa.codigo_et = this.data.codigo_et;
+    pesa.conductor = this.data.conductor;
+    pesa.estado = this.data.estado;
+    pesa.retencion_flete = this.data.retencion_flete;
+    pesa.monto_flete = this.data.monto_flete;
+    pesa.tipo_registro = this.data.tipo_registro;
+    pesa.observaciones = this.data.observaciones;
+    pesa.version  = this.data.version;
+    pesa.id_liquidacion = this.data.id_liquidacion;
+    pesa.usuario_ingreso = this.data.usuario_ingreso,
+    pesa.usuario_salida = this.data.usuario_salida;
+    pesa.usuario_version = this.data.usuario_version;
+    pesa.fecha_salida = this.data.fecha_salida;
+    pesa.fecha_anull = this.data.fecha_anull;
+    pesa.bitacora = this.data.bitacora;
+    pesa.estado_sinc = this.data.estado_sinc;
+    pesa.reg_guia = this.data.reg_guia;
+    pesa.serie = this.data.serie;
+
+
 
     let crit = new CriterioCalidad();
     crit.id_criterio = this.selectedValue;
@@ -136,12 +159,18 @@ export class DestararDialogComponent implements OnInit {
     evaluacion.factor_castigo = this.factor_castigo;
     evaluacion.usuario = "VEUSEBIO";
 
+    this.PesajeService.modificar(pesa).subscribe ( () => {
+
+    })
+
     this.evaluacionCalidadService.registrar(evaluacion).subscribe( () => {
       this.evaluacionCalidadService.listarPorIdPesaje(this.pesajes.id_pesaje).subscribe( (eva) => {
         this.evaluacionCalidadService.evaluacionCalidadCambio.next(eva);
         this.evaluacionCalidadService.mensajeCambio.next("Registro Correcto");
       });
     })
+
+
 
     this.limpiar();
   }
@@ -153,7 +182,7 @@ export class DestararDialogComponent implements OnInit {
       this.forma_castigo = opcion.forma_castigo;
       this.castigo = opcion.castigo;
       this.factor_castigo = opcion.factor_castigo;
-      
+
     }
 
   }

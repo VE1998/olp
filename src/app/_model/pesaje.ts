@@ -20,11 +20,11 @@ export class Pesaje{
   castigo_importe!: number;
   castigo_peso!: number;
   castigo_planilla!: number;
-  vehiculo!: Vehiculo
-  empresaTransporte!: EmpresaTransporte;
+  id_vehiculo!: Vehiculo
+  codigo_et!: EmpresaTransporte;
   conductor!: Conductor;
-  parcela!: Parcela;
-  producto!: Producto;
+  id_parcela!: Parcela;
+  cod_producto!: Producto;
   estado!: string;
   retencion_flete!: string;
   monto_flete!: string;
