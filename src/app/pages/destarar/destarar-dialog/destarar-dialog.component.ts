@@ -98,6 +98,9 @@ export class DestararDialogComponent implements OnInit {
       this.dataSource.paginator = this.paginator;
     });
 
+    console.log(this.data);
+    
+
   }
 
   listarCriterios() {
@@ -107,7 +110,7 @@ export class DestararDialogComponent implements OnInit {
   }
 
 
-  registrar() {
+  registrar() {debugger
 
     let pesa = new Pesaje();
     pesa.id_pesaje = this.pesajes.id_pesaje;
@@ -125,6 +128,8 @@ export class DestararDialogComponent implements OnInit {
     pesa.id_vehiculo = this.data.id_vehiculo;
     pesa.codigo_et = this.data.codigo_et;
     pesa.conductor = this.data.conductor;
+    pesa.id_parcela = this.data.id_parcela;
+    pesa.cod_producto = this.data.cod_producto;
     pesa.estado = this.data.estado;
     pesa.retencion_flete = this.data.retencion_flete;
     pesa.monto_flete = this.data.monto_flete;
@@ -159,16 +164,25 @@ export class DestararDialogComponent implements OnInit {
     evaluacion.factor_castigo = this.factor_castigo;
     evaluacion.usuario = "VEUSEBIO";
 
-    this.PesajeService.modificar(pesa).subscribe ( () => {
-
-    })
-
-    this.evaluacionCalidadService.registrar(evaluacion).subscribe( () => {
-      this.evaluacionCalidadService.listarPorIdPesaje(this.pesajes.id_pesaje).subscribe( (eva) => {
-        this.evaluacionCalidadService.evaluacionCalidadCambio.next(eva);
-        this.evaluacionCalidadService.mensajeCambio.next("Registro Correcto");
+    this.evaluacionCalidadService.registrar(evaluacion).subscribe(() => {
+      // Modificar pesa y esperar a que se complete
+      this.PesajeService.modificar(pesa).subscribe(() => {
+        // Listar evaluaciones por ID de pesaje
+        this.evaluacionCalidadService.listarPorIdPesaje(this.pesajes.id_pesaje).subscribe((eva) => {
+          // Notificar cambio en evaluación de calidad
+          this.evaluacionCalidadService.evaluacionCalidadCambio.next(eva);
+          this.evaluacionCalidadService.mensajeCambio.next("Registro Correcto");
+        });
+      }, (errorModificacion) => {
+        console.error("Error al modificar el pesaje:", errorModificacion);
+        // Puedes manejar el error de modificación aquí si es necesario
       });
-    })
+    }, (errorRegistro) => {
+      console.error("Error al registrar la evaluación de calidad:", errorRegistro);
+      // Puedes manejar el error de registro aquí si es necesario
+    });
+
+
 
 
 

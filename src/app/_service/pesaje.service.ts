@@ -25,14 +25,14 @@ export class PesajeService {
   }
 
   listaPorId(id_pesaje: number) {
-    return this.http.get<Pesaje>(`${this.url}/${id_pesaje}`);
+    return this.http.get<Pesaje[]>(`${this.url}/${id_pesaje}`);
   }
 
   registrar(pesaje: Pesaje) {
     return this.http.post(this.url, pesaje);
   }
 
-  modificar(pesaje: Pesaje) {debugger
+  modificar(pesaje: Pesaje) {
     return this.http.put(this.url, pesaje);
   }
 
