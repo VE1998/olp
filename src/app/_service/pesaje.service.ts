@@ -21,7 +21,7 @@ export class PesajeService {
   }
 
   destarar() {
-    return this.http.get<Pesaje[]>(this.url+'/destarar');
+    return this.http.get<Pesaje[]>(this.url+'/destarar'); 
   }
 
   listaPorId(id_pesaje: number) {
