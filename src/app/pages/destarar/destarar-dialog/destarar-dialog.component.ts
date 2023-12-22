@@ -99,7 +99,7 @@ export class DestararDialogComponent implements OnInit {
     });
 
     console.log(this.data);
-    
+
 
   }
 
@@ -110,42 +110,12 @@ export class DestararDialogComponent implements OnInit {
   }
 
 
-  registrar() {debugger
+  registrar() {
 
     let pesa = new Pesaje();
     pesa.id_pesaje = this.pesajes.id_pesaje;
-    pesa.num_ticket = this.data.num_ticket;
-    pesa.tipo_operacion = this.data.tipo_operacion;
-    pesa.id_to = this.data.id_to;
-    pesa.codigo = this.data.codigo;
-    pesa.fecha = this.data.fecha;
-    pesa.peso_ingreso = this.data.peso_ingreso;
-    pesa.peso_salida = this.data.peso_salida;
-    pesa.peso_neto = this.data.peso_neto;
-    pesa.castigo_importe = this.valor*this.factor_castigo;
-    pesa.castigo_peso = this.data.castigo_peso;
     pesa.castigo_planilla = this.data.castigo_planilla;
-    pesa.id_vehiculo = this.data.id_vehiculo;
-    pesa.codigo_et = this.data.codigo_et;
-    pesa.conductor = this.data.conductor;
-    pesa.id_parcela = this.data.id_parcela;
-    pesa.cod_producto = this.data.cod_producto;
-    pesa.estado = this.data.estado;
-    pesa.retencion_flete = this.data.retencion_flete;
-    pesa.monto_flete = this.data.monto_flete;
-    pesa.tipo_registro = this.data.tipo_registro;
-    pesa.observaciones = this.data.observaciones;
-    pesa.version  = this.data.version;
-    pesa.id_liquidacion = this.data.id_liquidacion;
-    pesa.usuario_ingreso = this.data.usuario_ingreso,
-    pesa.usuario_salida = this.data.usuario_salida;
-    pesa.usuario_version = this.data.usuario_version;
-    pesa.fecha_salida = this.data.fecha_salida;
-    pesa.fecha_anull = this.data.fecha_anull;
-    pesa.bitacora = this.data.bitacora;
-    pesa.estado_sinc = this.data.estado_sinc;
-    pesa.reg_guia = this.data.reg_guia;
-    pesa.serie = this.data.serie;
+
 
 
 
@@ -166,7 +136,7 @@ export class DestararDialogComponent implements OnInit {
 
     this.evaluacionCalidadService.registrar(evaluacion).subscribe(() => {
       // Modificar pesa y esperar a que se complete
-      this.PesajeService.modificar(pesa).subscribe(() => {
+      this.PesajeService.updatePlanilla(pesa.id_pesaje, pesa.castigo_planilla).subscribe(() => {
         // Listar evaluaciones por ID de pesaje
         this.evaluacionCalidadService.listarPorIdPesaje(this.pesajes.id_pesaje).subscribe((eva) => {
           // Notificar cambio en evaluación de calidad

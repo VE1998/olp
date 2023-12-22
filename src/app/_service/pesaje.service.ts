@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { Pesaje } from '../_model/pesaje';
 import { environment } from 'src/environments/environment.development';
 import { HttpClient } from '@angular/common/http';
@@ -34,6 +34,24 @@ export class PesajeService {
 
   modificar(pesaje: Pesaje) {
     return this.http.put(this.url, pesaje);
+  }
+
+  updatePlanilla(castigo: number, id_pesaje: number): Observable<any> {
+    const body = {
+      castigo,
+      id_pesaje,
+    };
+
+    return this.http.put<any>(this.url, body);
+  }
+
+  updateImporte(castigo: number, id_pesaje: number): Observable<any> {
+    const body = {
+      castigo,
+      id_pesaje,
+    };
+
+    return this.http.put<any>(this.url, body);
   }
 
 }
