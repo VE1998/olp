@@ -34,7 +34,6 @@ export class DestararDialogComponent implements OnInit {
     'formacastigo',
     'factorcastigo',
     'totalcastigo',
-    'actualizar',
     'eliminar',
   ];
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -98,6 +97,9 @@ export class DestararDialogComponent implements OnInit {
       this.dataSource.paginator = this.paginator;
     }); 
 
+    console.log(this.data);
+
+
   }
 
   listarCriterios() {
@@ -107,50 +109,18 @@ export class DestararDialogComponent implements OnInit {
   }
 
 
-  registrar() {debugger
+  registrar() {
 
+    //OPTENIENDO DATOS DE PESAJE
     let pesa = new Pesaje();
     pesa.id_pesaje = this.pesajes.id_pesaje;
-    pesa.num_ticket = this.data.num_ticket;
-    pesa.tipo_operacion = this.data.tipo_operacion;
-    pesa.id_to = this.data.id_to;
-    pesa.codigo = this.data.codigo;
-    pesa.fecha = this.data.fecha;
-    pesa.peso_ingreso = this.data.peso_ingreso;
-    pesa.peso_salida = this.data.peso_salida;
-    pesa.peso_neto = this.data.peso_neto;
-    pesa.castigo_importe = this.valor*this.factor_castigo;
-    pesa.castigo_peso = this.data.castigo_peso;
-    pesa.castigo_planilla = this.data.castigo_planilla;
-    pesa.id_vehiculo = this.data.id_vehiculo;
-    pesa.codigo_et = this.data.codigo_et;
-    pesa.conductor = this.data.conductor;
-    pesa.id_parcela = this.data.id_parcela;
-    pesa.cod_producto = this.data.cod_producto;
-    pesa.estado = this.data.estado;
-    pesa.retencion_flete = this.data.retencion_flete;
-    pesa.monto_flete = this.data.monto_flete;
-    pesa.tipo_registro = this.data.tipo_registro;
-    pesa.observaciones = this.data.observaciones;
-    pesa.version  = this.data.version;
-    pesa.id_liquidacion = this.data.id_liquidacion;
-    pesa.usuario_ingreso = this.data.usuario_ingreso,
-    pesa.usuario_salida = this.data.usuario_salida;
-    pesa.usuario_version = this.data.usuario_version;
-    pesa.fecha_salida = this.data.fecha_salida;
-    pesa.fecha_anull = this.data.fecha_anull;
-    pesa.bitacora = this.data.bitacora;
-    pesa.estado_sinc = this.data.estado_sinc;
-    pesa.reg_guia = this.data.reg_guia;
-    pesa.serie = this.data.serie;
+    
 
-
-
+    //OPTENIENDO CRITERIO CALIDAD
     let crit = new CriterioCalidad();
     crit.id_criterio = this.selectedValue;
 
-
-
+    //REGISTRANDO EVALUACION DE CALIDAD
     let evaluacion = new EvaluacionCalidad();
     evaluacion.id_pesaje = pesa;
     evaluacion.id_criterio = crit;
@@ -161,23 +131,46 @@ export class DestararDialogComponent implements OnInit {
     evaluacion.factor_castigo = this.factor_castigo;
     evaluacion.usuario = "VEUSEBIO";
 
-    this.evaluacionCalidadService.registrar(evaluacion).subscribe(() => {
-      // Modificar pesa y esperar a que se complete
-      this.PesajeService.modificar(pesa).subscribe(() => {
-        // Listar evaluaciones por ID de pesaje
-        this.evaluacionCalidadService.listarPorIdPesaje(this.pesajes.id_pesaje).subscribe((eva) => {
-          // Notificar cambio en evaluación de calidad
-          this.evaluacionCalidadService.evaluacionCalidadCambio.next(eva);
-          this.evaluacionCalidadService.mensajeCambio.next("Registro Correcto");
+    if(this.selectedValue === 1){
+      pesa.castigo_planilla = this.valor*this.factor_castigo;
+      this.evaluacionCalidadService.registrar(evaluacion).subscribe(() => {
+        this.PesajeService.updatePlanilla(pesa.castigo_planilla, pesa.id_pesaje).subscribe(() => {
+          this.evaluacionCalidadService.listarPorIdPesaje(this.pesajes.id_pesaje).subscribe((eva) => {
+            this.evaluacionCalidadService.evaluacionCalidadCambio.next(eva);
+            this.evaluacionCalidadService.mensajeCambio.next("Registro Correcto");
+          });
+        }, (errorModificacion) => {
+          console.error("Error al modificar el pesaje:", errorModificacion);
         });
-      }, (errorModificacion) => {
-        console.error("Error al modificar el pesaje:", errorModificacion);
-        // Puedes manejar el error de modificación aquí si es necesario
+      }, (errorRegistro) => {
+        console.error("Error al registrar la evaluación de calidad:", errorRegistro);
       });
-    }, (errorRegistro) => {
-      console.error("Error al registrar la evaluación de calidad:", errorRegistro);
-      // Puedes manejar el error de registro aquí si es necesario
-    });
+    }else if(this.selectedValue ===2){
+      pesa.castigo_importe = this.valor*this.factor_castigo;
+      this.evaluacionCalidadService.registrar(evaluacion).subscribe(() => {
+        this.PesajeService.updateImporte(pesa.castigo_importe, pesa.id_pesaje).subscribe(() => {
+          this.evaluacionCalidadService.listarPorIdPesaje(this.pesajes.id_pesaje).subscribe((eva) => {
+            this.evaluacionCalidadService.evaluacionCalidadCambio.next(eva);
+            this.evaluacionCalidadService.mensajeCambio.next("Registro Correcto");
+          });
+        }, (errorModificacion) => {
+          console.error("Error al modificar el pesaje:", errorModificacion);
+        });
+      }, (errorRegistro) => {
+        console.error("Error al registrar la evaluación de calidad:", errorRegistro);
+      });
+    }else{
+      this.evaluacionCalidadService.registrar(evaluacion).subscribe(() => {
+          this.evaluacionCalidadService.listarPorIdPesaje(this.pesajes.id_pesaje).subscribe((eva) => {
+            this.evaluacionCalidadService.evaluacionCalidadCambio.next(eva);
+            this.evaluacionCalidadService.mensajeCambio.next("Registro Correcto");
+          });
+      }, (errorRegistro) => {
+        console.error("Error al registrar la evaluación de calidad:", errorRegistro);
+      });
+    }
+
+    
 
 
 
