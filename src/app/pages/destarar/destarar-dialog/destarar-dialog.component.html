@@ -142,7 +142,7 @@
             <th mat-header-cell *matHeaderCellDef mat-sort-header>Eliminar</th>
             <td mat-cell *matCellDef="let row">
               <div class="example-button-container">
-                <button (click)="eliminarEvaluacion(row)" mat-icon-button color="warn" aria-label="Example icon button with a home icon">
+                <button (click)="eliminarEvaluacion(row.id_evaluacion)" mat-icon-button color="warn" aria-label="Example icon button with a home icon">
                   <mat-icon>delete</mat-icon>
                 </button>
               </div>

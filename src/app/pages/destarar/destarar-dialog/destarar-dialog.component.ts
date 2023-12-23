@@ -15,6 +15,7 @@ import { UnidadMedida } from 'src/app/_model/unidadmedida';
 import { CriteriocalidadService } from 'src/app/_service/criteriocalidad.service';
 import { EvaluacionCalidadService } from 'src/app/_service/evaluacion-calidad.service';
 import { PesajeService } from 'src/app/_service/pesaje.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-destarar-dialog',
@@ -214,8 +215,29 @@ export class DestararDialogComponent implements OnInit {
     }
   }
 
-  eliminarEvaluacion(evaluacion? : EvaluacionCalidad){
-
+  eliminarEvaluacion(id_evaluacion: number){debugger
+    Swal.fire({
+      title: "Estas seguro Eliminar",
+      text: "¡No podrás revertir esto!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Si, Bórralo"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.evaluacionCalidadService.eliminar(id_evaluacion).subscribe( () => {
+          this.evaluacionCalidadService.listarPorIdPesaje(this.pesajes.id_pesaje).subscribe( (eva) =>{
+            this.evaluacionCalidadService.evaluacionCalidadCambio.next(eva);
+            Swal.fire({
+              title: "Eliminado!",
+              text: "Evalucion Eliminado",
+              icon: "success"
+            });
+          });
+        });
+      }
+    });;
   }
 
 }

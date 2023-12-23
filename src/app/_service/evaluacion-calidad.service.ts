@@ -36,6 +36,9 @@ export class EvaluacionCalidadService {
     return this.http.put(this.url, evaluacionCalidad);
   }
 
+  eliminar(id_evaluacion: number) {
+    return this.http.delete<EvaluacionCalidad[]>(`${this.url}/${id_evaluacion}`);
+  }
 
 
 }
