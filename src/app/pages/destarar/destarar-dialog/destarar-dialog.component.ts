@@ -42,8 +42,12 @@ export class DestararDialogComponent implements OnInit {
   victor!: number;
   nombreApellido!: string;
   eva!: EvaluacionCalidad;
-  checked = false;
-  indeterminate = false;
+
+  //checkbox
+  chico = false;
+  grande = false;
+  checkSeleccionado!: string;
+
   crite!: CriterioCalidad;
   prueva : CriterioCalidad[] = [];
   um: string | undefined;
@@ -71,6 +75,9 @@ export class DestararDialogComponent implements OnInit {
     this.pesajes = new Pesaje();
     this.pesajes.id_pesaje = this.data.id_pesaje;
     this.pesajes.num_ticket = this.data.num_ticket;
+    this.pesajes.peso_ingreso = this.data.peso_ingreso;
+    this.pesajes.peso_salida = this.data.peso_salida;
+    this.pesajes.peso_salida = this.data.peso_neto;
 
     this.nombreApellido = this.data.codigo.nombres +' ' +this.data.codigo.paterno +' ' +this.data.codigo.materno;
     this.victor = this.data.id_pesaje;
@@ -130,6 +137,7 @@ export class DestararDialogComponent implements OnInit {
     evaluacion.forma_castigo =""+ this.forma_castigo;
     evaluacion.factor_castigo = this.factor_castigo;
     evaluacion.usuario = "VEUSEBIO";
+    evaluacion.tam_rac = this.checkSeleccionado;
 
     if(this.selectedValue === 1){
       pesa.castigo_planilla = this.valor*this.factor_castigo;
@@ -170,12 +178,6 @@ export class DestararDialogComponent implements OnInit {
       });
     }
 
-    
-
-
-
-
-
     this.limpiar();
   }
 
@@ -198,7 +200,22 @@ export class DestararDialogComponent implements OnInit {
     this.castigo = "";
     this.factor_castigo = 0;
     this.valor = 0;
+    this.chico = false;
+    this.grande = false;
   }
 
+  onCheckboxChange(checkboxNumber: String) {
+    if (checkboxNumber === 'CHICO') {
+      this.grande = !this.chico;
+      this.checkSeleccionado = "CHICO";
+    } else {
+      this.chico = !this.grande;
+      this.checkSeleccionado = "GRANDE";
+    }
+  }
+
+  eliminarEvaluacion(evaluacion? : EvaluacionCalidad){
+
+  }
 
 }

@@ -13,5 +13,6 @@ export class EvaluacionCalidad{
   forma_castigo!: string;
   factor_castigo!: number;
   usuario!: string;
+  tam_rac!: string;
 
 }
