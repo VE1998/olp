@@ -29,18 +29,18 @@
       <img src="assets/logo_olpasa.png" width="150" height="60" style="margin-left: 20px" />
 
       <button mat-menu-item (click)="drawer.toggle()" routerLink="/" style="cursor: pointer">
-        <mat-icon>dashboard</mat-icon> 
+        <mat-icon>dashboard</mat-icon>
         <span>Inicio</span>
       </button>
-
-      <button mat-menu-item (click)="drawer.toggle()" routerLink="/evaluacion" style="cursor: pointer">
-        <mat-icon>explicit</mat-icon> 
-        <span>E. Calidad</span>
-      </button>
-
+      <mat-divider></mat-divider>
       <button mat-menu-item (click)="drawer.toggle()" routerLink="/destarar" style="cursor: pointer">
         <mat-icon>border_color</mat-icon>
         <span>Evaluar</span>
+      </button>
+      <mat-divider></mat-divider>
+      <button mat-menu-item (click)="drawer.toggle()" routerLink="/evaluacion" style="cursor: pointer">
+        <mat-icon>explicit</mat-icon>
+        <span>Reporte Evaluacion</span>
       </button>
 
     </mat-drawer>

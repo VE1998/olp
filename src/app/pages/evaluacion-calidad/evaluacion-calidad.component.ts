@@ -20,10 +20,30 @@ export class EvaluacionCalidadComponent implements OnInit{
   dataSource!: MatTableDataSource<Pesaje>;
   displeyedColumns = [
     'numTiket',
-    'persona',
-    'operacion',
-    'producto',
-    'acciones',
+    'fecha',
+    'hora',
+    'empresa',
+    'placa',
+    'conductor',
+    'flete',
+    'sector',
+    'campaña',
+    'tipoRacimo',
+    'condicion',
+    'escobajoValor',
+    'escobajoUM',
+    'escobajoPromedio',
+    'escobajoCastigo',
+    'pedunculoLargoValor',
+    'pedunculoLargoUM',
+    'pedunculoLargoPromedio',
+    'pedunculoLargoCastigo',
+    'racimoVerde',
+    'racimoVerdeUM',
+    'racimoVerdePromedio',
+    'racimoVerdeCastigo',
+    'pesoNeto'
+
   ];
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -38,23 +58,9 @@ export class EvaluacionCalidadComponent implements OnInit{
 
   ngOnInit() {
 
-    this.PesajeService.destarar().subscribe((data) => {
-      this.dataSource = new MatTableDataSource(data);
-      this.dataSource.sort = this.sort;
-      this.dataSource.paginator = this.paginator;
-      console.log(data);
-    });
-    
+
+
   }
 
-  openDialog(evaluacion?: EvaluacionCalidad) {
-
-    let eva = evaluacion != null ? evaluacion: new EvaluacionCalidad();
-
-    this.dialog.open(EvaluacionCalidadDialogComponent, {
-      width: '800px',
-      data: eva,
-    });
-  }
 
 }
