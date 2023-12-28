@@ -37,6 +37,8 @@ export class DestararDialogComponent implements OnInit {
 
   limpieza: Limpeza[] = [{ value: 'LIMPIO' }, { value: 'SUCIO' }];
 
+  listaEvaluacion: EvaluacionCalidad[] = [];
+
   selectedValue!: number;
   criterios: CriterioCalidad[] = [];
   idCriterioSeleccionado!: number;
@@ -97,7 +99,7 @@ export class DestararDialogComponent implements OnInit {
     this.pesajes.num_ticket = this.data.num_ticket;
     this.pesajes.peso_ingreso = this.data.peso_ingreso;
     this.pesajes.peso_salida = this.data.peso_salida;
-    this.pesajes.peso_salida = this.data.peso_neto;
+    this.pesajes.peso_neto = this.data.peso_neto;
 
     this.nombreApellido =
       this.data.codigo.nombres +
@@ -115,7 +117,7 @@ export class DestararDialogComponent implements OnInit {
       this.factor_castigo = 0;
     }
 
-
+    // RELLAR DATOS A LA TABLA
     this.evaluacionCalidadService.evaluacionCalidadCambio.subscribe((data) => {
       this.dataSource = new MatTableDataSource(data);
       this.dataSource.sort = this.sort;
@@ -136,6 +138,7 @@ export class DestararDialogComponent implements OnInit {
         this.dataSource.paginator = this.paginator;
       });
 
+      this.listarEvaluacion();
   }
 
   listarCriterios() {
@@ -144,8 +147,15 @@ export class DestararDialogComponent implements OnInit {
     });
   }
 
-  registrar() {
-    //OPTENIENDO DATOS DE PESAJE
+  listarEvaluacion(){
+    this.evaluacionCalidadService.listarPorIdPesaje(this.victor).subscribe ( (data) => {
+      this.evaluacionCalidadService.evaluacionCalidadCambio.next(data);
+      this.listaEvaluacion = data;
+   });
+  }
+
+  registrar() {debugger
+
     let pesa = new Pesaje();
     pesa.id_pesaje = this.pesajes.id_pesaje;
 
@@ -165,21 +175,14 @@ export class DestararDialogComponent implements OnInit {
     evaluacion.usuario = 'VEUSEBIO';
     evaluacion.tam_rac = this.checkSeleccionado;
 
+   if(this.listaEvaluacion.length === 0){
     if (this.selectedValue === 1) {
       pesa.castigo_planilla = this.valor * this.factor_castigo;
-      this.evaluacionCalidadService.registrar(evaluacion).subscribe(
-        () => {
-          this.PesajeService.updatePlanilla(
-            pesa.castigo_planilla,
-            pesa.id_pesaje
-          ).subscribe(
-            () => {
-              this.evaluacionCalidadService
-                .listarPorIdPesaje(this.pesajes.id_pesaje)
-                .subscribe((eva) => {
-                  this.evaluacionCalidadService.evaluacionCalidadCambio.next(
-                    eva
-                  );
+      this.evaluacionCalidadService.registrar(evaluacion).subscribe(() => {
+          this.PesajeService.updatePlanilla(pesa.castigo_planilla,pesa.id_pesaje).subscribe(() => {
+              this.evaluacionCalidadService.listarPorIdPesaje(this.pesajes.id_pesaje).subscribe((eva) => {
+                  this.evaluacionCalidadService.evaluacionCalidadCambio.next(eva);
+                  this.listarEvaluacion();
                   Swal.fire({
                     position: 'top-end',
                     icon: 'success',
@@ -216,6 +219,7 @@ export class DestararDialogComponent implements OnInit {
                   this.evaluacionCalidadService.evaluacionCalidadCambio.next(
                     eva
                   );
+                  this.listarEvaluacion();
                   Swal.fire({
                     position: 'top-end',
                     icon: 'success',
@@ -244,6 +248,7 @@ export class DestararDialogComponent implements OnInit {
             .listarPorIdPesaje(this.pesajes.id_pesaje)
             .subscribe((eva) => {
               this.evaluacionCalidadService.evaluacionCalidadCambio.next(eva);
+              this.listarEvaluacion();
               Swal.fire({
                 position: 'top-end',
                 icon: 'success',
@@ -261,8 +266,110 @@ export class DestararDialogComponent implements OnInit {
         }
       );
     }
+   }else {
+    for(let i = 0; i < this.listaEvaluacion.length; i++){
+      if(this.listaEvaluacion[i].id_criterio.id_criterio === this.selectedValue){
+        Swal.fire({
+          title: "Error",
+          text: "El Criterio Ya esta registrado para esta Carga",
+          icon: "error"
+        });       
+      }else{
+        if (this.selectedValue === 1) {
+          pesa.castigo_planilla = this.valor * this.factor_castigo;
+          this.evaluacionCalidadService.registrar(evaluacion).subscribe(() => {
+              this.PesajeService.updatePlanilla(pesa.castigo_planilla,pesa.id_pesaje).subscribe(() => {
+                  this.evaluacionCalidadService.listarPorIdPesaje(this.pesajes.id_pesaje).subscribe((eva) => {
+                      this.evaluacionCalidadService.evaluacionCalidadCambio.next(eva);
+                      this.listarEvaluacion();
+                      Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: 'Registro Correcto',
+                        showConfirmButton: false,
+                        timer: 3000,
+                      });
+                    });
+                },
+                (errorModificacion) => {
+                  console.error('Error al modificar el pesaje:', errorModificacion);
+                }
+              );
+            },
+            (errorRegistro) => {
+              console.error(
+                'Error al registrar la evaluación de calidad:',
+                errorRegistro
+              );
+            }
+          );
+        } else if (this.selectedValue === 2) {
+          pesa.castigo_importe = this.valor * this.factor_castigo;
+          this.evaluacionCalidadService.registrar(evaluacion).subscribe(
+            () => {
+              this.PesajeService.updateImporte(
+                pesa.castigo_importe,
+                pesa.id_pesaje
+              ).subscribe(
+                () => {
+                  this.evaluacionCalidadService
+                    .listarPorIdPesaje(this.pesajes.id_pesaje)
+                    .subscribe((eva) => {
+                      this.evaluacionCalidadService.evaluacionCalidadCambio.next(
+                        eva
+                      );
+                      this.listarEvaluacion();
+                      Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: 'Registro Correcto',
+                        showConfirmButton: false,
+                        timer: 3000,
+                      });
+                    });
+                },
+                (errorModificacion) => {
+                  console.error('Error al modificar el pesaje:', errorModificacion);
+                }
+              );
+            },
+            (errorRegistro) => {
+              console.error(
+                'Error al registrar la evaluación de calidad:',
+                errorRegistro
+              );
+            }
+          );
+        } else {
+          this.evaluacionCalidadService.registrar(evaluacion).subscribe(
+            () => {
+              this.evaluacionCalidadService
+                .listarPorIdPesaje(this.pesajes.id_pesaje)
+                .subscribe((eva) => {
+                  this.evaluacionCalidadService.evaluacionCalidadCambio.next(eva);
+                  this.listarEvaluacion();
+                  Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'Registro Correcto',
+                    showConfirmButton: false,
+                    timer: 3000,
+                  });
+                });
+            },
+            (errorRegistro) => {
+              console.error(
+                'Error al registrar la evaluación de calidad:',
+                errorRegistro
+              );
+            }
+          );
+        }
+      }
+    }
+   }
 
-    this.limpiar();
+   this.limpiar();
   }
 
   onFoodSelection2() {

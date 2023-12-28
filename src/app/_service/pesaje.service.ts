@@ -45,7 +45,7 @@ export class PesajeService {
     return this.http.put<any>(this.url+'/updatePlanilla', body);
   }
 
-  updateImporte(castigo_importe: number, id_pesaje: number): Observable<any> {debugger
+  updateImporte(castigo_importe: number, id_pesaje: number): Observable<any> {
     const body = {
       castigo_importe,
       id_pesaje,
