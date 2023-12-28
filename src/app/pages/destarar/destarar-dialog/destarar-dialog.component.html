@@ -74,42 +74,8 @@
         </mat-form-field>
       </div>
 
-      <mat-card>
-        <mat-card-header>
-          <mat-card-subtitle>CONTROL RFF</mat-card-subtitle>
-        </mat-card-header>
-        <mat-card-content>
-          <div class="row">
-            <!-- CAMPAÑA-->
-            <mat-form-field appearance="outline">
-              <mat-label>Campaña</mat-label>
-              <input matInput placeholder="Campaña" [value]="">
-            </mat-form-field>
-
-            <mat-form-field>
-              <mat-select placeholder="Limpieza" [(ngModel)]="selectedValue">
-                <mat-option value=""></mat-option>
-                <mat-option *ngFor="let l of limpieza" [value]="l.value">
-                  {{ l.value }}
-                </mat-option>
-              </mat-select>
-            </mat-form-field>
-
-            <mat-form-field>
-              <mat-select placeholder="Tipo Racimo" [(ngModel)]="selectedValue">
-                <mat-option value=""></mat-option>
-                <mat-option *ngFor="let tr of tipoRacimo" [value]="tr.value">
-                  {{ tr.value }}
-                </mat-option>
-              </mat-select>
-            </mat-form-field>
-          </div>
-
-        </mat-card-content>
-      </mat-card>
-
     </mat-card-content>
-    <mat-card-actions>
+    <mat-card-actions align="end">
       <button mat-raised-button (click)="registrar()" color="primary" mat-button>Registrar</button>
     </mat-card-actions>
   </mat-card>
@@ -176,9 +142,50 @@
       <tr mat-row *matRowDef="let row; columns: displeyedColumns"></tr>
     </table>
   </section>
-</div>
 
+<br>
+
+  <mat-card>
+    <mat-card-header>
+      <mat-card-subtitle>REGISTRAR CONTROL DE RFF</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="row">
+        <!-- CAMPAÑA-->
+        <mat-form-field appearance="outline">
+          <mat-label>Campaña</mat-label>
+          <input matInput placeholder="Campaña" [(ngModel)]="campana">
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-select placeholder="Limpieza" [(ngModel)]="condicion">
+            <mat-option *ngFor="let l of limpieza" [value]="l.value">
+              {{ l.value }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-select placeholder="Tipo Racimo" [(ngModel)]="tipo_racimo">
+            <mat-option *ngFor="let tr of tipoRacimo" [value]="tr.value">
+              {{ tr.value }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </mat-card-content>
+    <mat-card-actions align="end">
+      <button mat-raised-button color="primary" (click)="registrarControl()">Registrar</button>
+    </mat-card-actions>
+  </mat-card>
+</div>
 
 <div mat-dialog-actions class="action">
-  <button mat-raised-button type="button" mat-raised-button color="warn" [mat-dialog-close]="false">SALIR</button>
+  <button mat-raised-button color="warn">SALIR</button>
 </div>
+
+
+
+
+
+
